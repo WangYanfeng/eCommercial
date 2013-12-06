@@ -1,0 +1,66 @@
+<!documentype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>易通商务管理系统</title>
+		<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css">
+		<link rel="stylesheet" type="text/css" href="home/Public/css/index.css">
+		<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="ext/ext-all.js"></script>
+		<script src="home/Public/js/mainMenu.js"></script>
+		<script>
+			Ext.onReady(function(){
+				var north={
+							region:'north',
+							height:100,
+							autoScroll:true,
+							bodyStyle:"background:#abcdef;padding-left:20px",
+							html:'<div id="title">易通商务管理系统</div>',
+							cls:'header'
+				};
+				var west={
+							region:'west',
+							xtype:'panel',
+							split:true,
+							id:'menuPanel',
+							collapsible:true,
+							collapsibleModel:'mini',
+							title:'功能菜单',
+							width:160,
+							minSize:160,
+							layout:'fit',
+							bodyStyle:'background:#abcdef;padding-bottom:80px;',
+							html:'<div style="margin-top:20px;text-align:center">欢迎使用易通管理系统<br>copyright</div>',
+							listeners:{
+								afterRender:function(){
+									var menuPanel=getMenuPanel();
+									this.add(menuPanel);				
+								}
+							}
+				};
+				var center={
+							region:'center',
+							xtype:'tabpanel',
+							plain:true,
+							activeTab:0,
+							minTabWidth:85,
+							width:230,
+							items:[{
+								title:'系统简介',
+								type:'panel',
+								autoLoad:'',
+								closable:true
+							}]
+						};
+				var viewport=new Ext.container.Viewport({
+					layout:'border',
+					renderTo:Ext.getBody(),
+					items:[north,west,center]
+				});
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
