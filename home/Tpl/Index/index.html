@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="ext/ext-all.js"></script>
 		<script src="home/Public/js/mainMenu.js"></script>
+		<script src="home/Public/js/purchaseOrder.js"></script>
 		<script>
 			Ext.onReady(function(){
 				var north={
@@ -50,7 +51,13 @@
 								type:'panel',
 								autoLoad:'',
 								closable:true
-							}]
+							}],
+							listeners:{
+								afterRender:function(){
+									var form=newPurchaseOrderPanel();
+									this.add(form);
+								}
+							}
 						};
 				var viewport=new Ext.container.Viewport({
 					layout:'border',

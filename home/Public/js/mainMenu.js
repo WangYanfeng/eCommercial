@@ -27,7 +27,7 @@ function getMenuPanel(){
 				cls:'menuButton',
 				icon:''
 			}],
-			cls:'mainMenu'	
+			cls:'mainMenu'
 		},{
 			title:'销售单',
 			iconCls:'mainMenuIcon',
@@ -81,38 +81,6 @@ function getMenuPanel(){
 			},{
 				xtype:'button',
 				text:'浏览',
-				cls:'menuButton',
-				icon:''
-			}],
-			cls:'mainMenu'
-		},{
-			title:'客户档案',
-			html:'d',
-			iconCls:'mainMenuIcon',
-			items:[{
-				xtype:'button',
-				text:'新建',
-				cls:'menuButton',
-				icon:''
-			},{
-				xtype:'button',
-				text:'浏览',
-				cls:'menuButton',
-				icon:''
-			}],
-			cls:'mainMenu'
-		},{
-			title:'供应商档案',
-			html:'d',
-			iconCls:'mainMenuIcon',
-			items:[{
-				xtype:'button',
-				text:'aa',
-				cls:'menuButton',
-				icon:''
-			},{
-				xtype:'button',
-				text:'bb',
 				cls:'menuButton',
 				icon:''
 			}],

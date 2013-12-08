@@ -5,7 +5,7 @@ return array(
 	'DB_TYPE' => 'mysql',
 
 	'DB_LOCALHOST'=>'127.0.0.1',
-	'DB_NAME'=>'HanGame',
+	'DB_NAME'=>'ecommercial',
     'DB_USER'=>'root',
     'DB_PWD'=>'',
     
