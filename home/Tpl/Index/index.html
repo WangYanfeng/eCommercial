@@ -1,73 +1,229 @@
-<!documentype html>
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>易通商务管理系统</title>
-		<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css">
-		<link rel="stylesheet" type="text/css" href="home/Public/css/index.css">
-		<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="ext/ext-all.js"></script>
-		<script src="home/Public/js/mainMenu.js"></script>
-		<script src="home/Public/js/purchaseOrder.js"></script>
-		<script>
-			Ext.onReady(function(){
-				var north={
-							region:'north',
-							height:100,
-							autoScroll:true,
-							bodyStyle:"background:#abcdef;padding-left:20px",
-							html:'<div id="title">易通商务管理系统</div>',
-							cls:'header'
-				};
-				var west={
-							region:'west',
-							xtype:'panel',
-							split:true,
-							id:'menuPanel',
-							collapsible:true,
-							collapsibleModel:'mini',
-							title:'功能菜单',
-							width:160,
-							minSize:160,
-							layout:'fit',
-							bodyStyle:'background:#abcdef;padding-bottom:80px;',
-							html:'<div style="margin-top:20px;text-align:center">欢迎使用易通管理系统<br>copyright</div>',
-							listeners:{
-								afterRender:function(){
-									var menuPanel=getMenuPanel();
-									this.add(menuPanel);				
-								}
-							}
-				};
-				var center={
-							region:'center',
-							xtype:'tabpanel',
-							plain:true,
-							activeTab:0,
-							minTabWidth:85,
-							width:230,
-							items:[{
-								title:'系统简介',
-								type:'panel',
-								autoLoad:'',
-								closable:true
-							}],
-							listeners:{
-								afterRender:function(){
-									var form=newPurchaseOrderPanel();
-									this.add(form);
-								}
-							}
-						};
-				var viewport=new Ext.container.Viewport({
-					layout:'border',
-					renderTo:Ext.getBody(),
-					items:[north,west,center]
-				});
-			})
-		</script>
-	</head>
-	<body>
-		
-	</body>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>易通商务管理系统</title>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/home/Public/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="__ROOT__/home/Public/css/index.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/ext/resources/css/ext-all.css">
+	<script type="text/javascript" src="__ROOT__/ext/adapter/ext/ext-base.js"></script>
+	<script type="text/javascript" src="__ROOT__/ext/ext-all.js"></script>
+	<script>
+	Ext.onReady(function(){		
+		Ext.QuickTips.init();
+		Ext.apply(Ext.form.VTypes,{ 
+		    password:function(val,field){ 
+		       if(field.confirmTo){
+		       		var pwd=Ext.getCmp(field.confirmTo);
+		          return (val==pwd.getValue()); 
+		       } 
+		       return true;
+		    } 
+		}); 
+		var loginForm=new Ext.form.Panel({
+			renderTo:'login',
+			id:'loginForm',
+			title:' ',
+			height:400,
+			width:400,
+			standardSubmit:true,
+			bodyStyle:'padding-top:30px;padding-left:15px;',
+			defaults:{
+				labelSeparator:':',
+				labelWidth:90,
+				labelAlign:'right',
+				height:30,
+				allowBlank:false,
+				blankText:'不允许为空',
+				msgTarget:'qtip'
+			},
+			items:[{
+				xtype:'textfield',
+				size:30,
+				name:'vender_name',
+				fieldLabel:'店铺账号'
+			},{
+				xtype:'textfield',
+				name:'vender_pwd',				
+				size:30,
+				fieldLabel:'密码',
+				minLength:6,
+				minLengthText:'密码长度至少6位',
+				inputType:'password'
+			},{
+				xtype:'button',
+				text:'登录',
+				width:60,
+				formBind: true, //only enabled once the form is valid
+        disabled: true,
+				cls:'button',
+        handler: function() {
+          var form = this.up('form').getForm();
+          if (form.isValid()) {
+            form.submit({
+            		clientValidation:true,
+            		url:'__APP__/Index/index',
+            		method:'POST',
+                success: function(form, action) {
+                   Ext.Msg.alert('Success','登陆成功');
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('Failed', action.failureType);
+                }
+            });
+          }
+        }
+			},{
+				xtype:'button',
+				text:'重置',
+				width:60,
+				cls:'button',
+				handler:function(){
+					this.up('form').getForm().reset();
+				}
+			}]
+		});
+		var registForm=new Ext.form.Panel({
+			title:' ',
+			renderTo:'regist',
+			id:'registForm',
+			height:400,
+			width:400,
+			bodyStyle:'padding-top:30px;padding-left:15px;',
+			defaults:{
+				labelSeparator:':',
+				labelWidth:90,
+				height:30,
+				allowBlank:false,
+				blankText:'不允许为空',
+				labelAlign:'right',
+				msgTarget:'qtip'
+			},
+			html:'<div id="tips" style="margin-top:10px;color:red;"></div>',
+			items:[{
+				xtype:'textfield',
+				size:30,
+				name:'vender_name',
+				fieldLabel:'店铺账号'
+			},{
+				xtype:'textfield',
+				id:'password1',
+				name:'vender_pwd',				
+				size:30,
+				fieldLabel:'密码',
+				minLength:6,
+				minLengthText:'密码长度至少6位',
+				inputType:'password'
+			},{
+				xtype:'textfield',
+				size:30,
+				fieldLabel:'确认密码',
+				inputType:'password',
+				vtype:"password",//自定义的验证类型
+        vtypeText:"两次密码不一致！",
+        confirmTo:'password1'//要比较的另外一个的组件的id
+			},{
+				xtype:'textfield',
+				size:30,
+				name:'vender_addr',
+				fieldLabel:'地址'
+			},{
+				xtype:'textfield',
+				name:'vender_phone',
+				regex: /^[0-9]*$/,
+				size:30,
+				invalidText:'请输入数字',
+				fieldLabel:'联系电话'
+			},{
+				xtype:'button',
+				text:'注册',
+				width:60,
+				formBind: true, //only enabled once the form is valid
+        disabled: true,
+				cls:'button',
+        handler: function() {
+          var form = this.up('form').getForm();
+          if (form.isValid()) {
+            form.submit({
+            		clientValidation:true,
+            		method:'POST',
+								url:'__APP__/Index/regist',
+                success: function(form, action) {
+                	Ext.core.DomHelper.append(Ext.get('tips'),"注册成功！");
+                	setTimeout('window.location.href="__APP__/Index/index"',2000);
+                },
+                failure: function(form, action) {
+                  Ext.core.DomHelper.append(Ext.get('tips'),"该账号已存在！");
+                }
+            });
+          }
+        }
+			},{
+				xtype:'button',
+				text:'重置',
+				width:60,
+				cls:'button',
+				handler:function(){
+					this.up('form').getForm().reset();
+				}
+			}]
+		});
+		Ext.get('regist').setDisplayed(false);
+		var tab_regist=Ext.get('tab_regist');
+		var tab_login=Ext.get('tab_login');
+		tab_regist.on('click', function(event) {
+			tab_login.removeCls("tab_active");
+			this.addCls("tab_active");
+			Ext.get('login').setDisplayed(false);
+			Ext.get('regist').setDisplayed(true);
+		});
+		tab_login.on('click', function(event) {
+			tab_regist.removeCls("tab_active");
+			this.addCls("tab_active");
+			Ext.get('regist').setDisplayed(false);
+			Ext.get('login').setDisplayed(true);
+		});
+	})
+	</script>
+</head>
+<body>
+<div id="top">
+  <div class="container">
+    <div>
+      <a class="brand" style="width:600px">
+          <span>
+            <img width="40" height="35" src="__ROOT__/favicon.ico" alt="易通logo"> 易通商务管理系统
+          </span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container" style="width:85%">
+	<div class="row-fluid">
+		<div class="span8">
+			<div style="height:800px;">aaaaa</div>
+		</div>
+		<div class="span4">
+			<div style="background-color:#abcde">
+				<div class="tabbar">
+					<ul>
+						<li class="tab tab_active" id="tab_login"><a>登录</a></li>
+						<li class="tab" id="tab_regist"><a>注册</a></li>
+					</ul>
+				</div>
+				<div>
+					<div id="login" style="margin-bottom:60px"></div>
+					<div id="regist" style="margin-bottom:60px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">陕西省西安市|88372201 88372202
+  <div class="footerhr">
+    <hr>
+  </div>
+  Copyrights © 2013易通商务管理系统|
+  <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备08888888号-1</a>|陕公网安备8888888888
+</div>
+</body>
 </html>

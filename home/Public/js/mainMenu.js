@@ -85,6 +85,21 @@ function getMenuPanel(){
 				icon:''
 			}],
 			cls:'mainMenu'
+		},{
+			title:'分店管理',
+			iconCls:'mainMenuIcon',
+			items:[{
+				xtype:'button',
+				text:'创建分店账号',
+				cls:'menuButton',
+				icon:''
+			},{
+				xtype:'button',
+				text:'浏览分店',
+				cls:'menuButton',
+				icon:''
+			}],
+			cls:'mainMenu'
 		}]
 	});
 	return menuPanel;

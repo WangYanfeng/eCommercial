@@ -1,0 +1,27 @@
+#title{
+	font-size: 40px;
+	margin-top: 15px;
+	text-align: center;
+}
+#vender_logout{
+	text-align:right;
+	margin-top:10px;
+	margin-right:20px;
+	font-size: 14px;
+	font-family:'微软雅黑', Helvetica,Arial,sans-serif;
+}
+#vender_logout a:hover{
+	TEXT-DECORATION:none;
+	color:rgb(240,100,60);
+}
+.mainMenu{
+	cursor: pointer;
+	height: 150px;
+	text-align: center;
+	float: top;
+}
+.menuButton{
+	width: 100%;
+	text-align: left;
+	height:30px;
+}

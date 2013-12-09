@@ -4,6 +4,7 @@ function newPurchaseOrderPanel(){
 		width:500,
 		height:400,
 		frame:true,
+		closable:true,
 		fieldDefaults:{
 			labelSeparator:':',
 			msgTarget:'side',

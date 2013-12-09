@@ -1,0 +1,72 @@
+<!documentype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>易通商务管理系统</title>
+		<link rel="stylesheet" type="text/css" href="__ROOT__/ext/resources/css/ext-all.css">
+		<link rel="stylesheet" type="text/css" href="__ROOT__/home/Public/css/mainpage.css">
+		<script type="text/javascript" src="__ROOT__/ext/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="__ROOT__/ext/ext-all.js"></script>
+		<script src="__ROOT__/home/Public/js/mainMenu.js"></script>
+		<script src="__ROOT__/home/Public/js/purchaseOrder.js"></script>
+		<script>
+			Ext.onReady(function(){				
+				var north={
+							region:'north',
+							height:100,
+							autoScroll:true,
+							bodyStyle:"background:#abcdef;padding-left:20px",
+							html:'<div id="title">易通商务管理系统</div><div id="vender_logout"><a href="?m=Index&a=logout">您好,<{$_SESSION[\'vender\'][vender_name]}>! | 退出</a></div>'
+				};
+				var west={
+							region:'west',
+							xtype:'panel',
+							split:true,
+							id:'menuPanel',
+							collapsible:true,
+							collapsibleModel:'mini',
+							title:'功能菜单',
+							width:160,
+							minSize:160,
+							layout:'fit',
+							bodyStyle:'background:#abcdef;padding-bottom:80px;',
+							html:'<div style="margin-top:20px;text-align:center">欢迎使用易通管理系统<br>copyright</div>',
+							listeners:{
+								afterRender:function(){
+									var menuPanel=getMenuPanel();
+									this.add(menuPanel);				
+								}
+							}
+				};
+				var center={
+							region:'center',
+							xtype:'tabpanel',
+							plain:true,
+							activeTab:0,
+							minTabWidth:85,
+							width:230,
+							items:[{
+								title:'系统简介',
+								type:'panel',
+								autoLoad:'',
+								closable:true
+							}],
+							listeners:{
+								afterRender:function(){
+									var form=newPurchaseOrderPanel();
+									this.add(form);
+								}
+							}
+						};
+				var viewport=new Ext.container.Viewport({
+					layout:'border',
+					renderTo:Ext.getBody(),
+					items:[north,west,center]
+				});
+			})
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

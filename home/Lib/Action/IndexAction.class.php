@@ -1,65 +1,63 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 class IndexAction extends Action {
-    public function index(){
-    	//$this->display();
-    	$this->display('login');
-	}
-	function login(){
-    	if($this->isPost()){
-    		$user = $_POST['userName'];
-            $pwd = $_POST['password'];
-            $DBuser_basic=D('user_basic');
-            $res=$DBuser_basic->where("account='" . $user . "' AND pwd='" . $pwd. "'")->find();
-            $id=$res['id'];
-            if ($res) {
-                session('user', array(
-                            'id' => $res['id'],
-                            'account' => $res['account']
-                ));
-                //echo $_SESSION['user']['name'];die();
-                header('Location: index.php?m=GameHall&a=hall');
-            }else{
-                $result='密码错误';
-                $this->assign('result',$result);
-                $this->display();
-            }
+	function index(){
+      $this->redirect('?m=Index&a=mainpage');die();
+    	if($this->isPost()){        
+      	$vender_name = $_POST['vender_name'];
+        $vender_pwd = $_POST['vender_pwd'];
+        $DBvenders=D('venders');
+        $res=$DBvenders->where("vender_name='" . $vender_name . "' AND vender_pwd='" . $vender_pwd. "'")->find();
+        if ($res) {
+            session('vender', array(
+                        'vender_id' => $res['vender_id'],
+                        'vender_name' => $res['vender_name']
+            ));
+            //$this->redirect('?m=Index&a=mainpage');die();
+        }else{
+            $this->error('密码错误');
+        }
     	}else{
     		$this->display();
     	}
-    }
-    function regist(){
-        if($this->isPost()){
-            $data['account']=I('userName');
-            $data['pwd']=I('userPassword');
-            $data['email']=I('userEmail');
-            $data['in_time']=date('y-m-d H:i:s',time());
-            $res=filter_var($data['email'],FILTER_VALIDATE_EMAIL);
-            if($res==false){
-                echo "邮箱格式错误！";
-            }else{
-                $DBuser=D('user_basic');
-                $res=$DBuser->where("account='".$data['account']."'")->find();
-                if($res){
-                    echo "用户名已存在！";
-                }else{
-                    $res=$DBuser->add($data);
-                    if($res){
-                        $DBuser_active=D('user_active');
-                        $id=$DBuser->where("account='".$data['account']."'")->getField('id');
-                        $act_data['uid']=$id;
-                        $act_data['time']=date('y-m-d H:i:s',time());
-                        $DBuser_active->add($act_data);
-                        echo "success";
-                    }
-                }
-            }
-        }else{
-            $this->display();
-        }
-    }
-    public function logout(){
-        session(null);
-        $this->success('退出成功，返回首页','__APP__');
-    }  
+  }
+  function mainpage(){
+      $this->display();
+  }
+  function regist(){      
+      $data['vender_name']=I('vender_name');
+      $data['vender_pwd']=I('vender_pwd');
+      $data['vender_addr']=I('vender_addr');
+      $data['vender_phone']=I('vender_phone');
+      $data['in_time']=date('y-m-d H:i:s',time());
+      $DBvenders=D('venders');
+      $res=$DBvenders->where("vender_name='".$data['vender_name']."'")->find();
+      if($res){
+          echo "{success:false}";
+      }else{
+          $res=$DBvenders->add($data);
+          if($res){
+              $DBuser_active=D('user_active');
+              $vender_id=$DBvenders->where("vender_name='".$data['vender_name']."'")->getField('id');
+              createTB($vender_id);
+              echo "{success:true}";
+          }
+      }      
+  }
+  public function createTB($id){
+    M()->query("CREATE TABLE `ib_data_bridge$id` (`id` int(11) NOT NULL AUTO_INCREMENT,
+                     `sensor_id` int(11) NOT NULL,
+                     `sensor_model` varchar(255) NOT NULL,
+                     `name` varchar(255) DEFAULT NULL,
+                     `bridge_id` int(11) NOT NULL,
+                     `value` double(255,3) NOT NULL,
+                     `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                     `temperature` double(255,2) DEFAULT NULL,
+                     PRIMARY KEY (`id`)
+                    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+  }
+  public function logout(){
+      session(null);
+      $this->success('退出成功，返回首页','__APP__');
+  }  
 }
