@@ -2,8 +2,8 @@
 // 本类由系统自动生成，仅供测试用途
 class IndexAction extends Action {
 	function index(){
-      $this->redirect('?m=Index&a=mainpage');die();
-    	if($this->isPost()){        
+    	if($this->isPost()){  
+        $this->redirect('?m=Index&a=mainpage');die();      
       	$vender_name = $_POST['vender_name'];
         $vender_pwd = $_POST['vender_pwd'];
         $DBvenders=D('venders');

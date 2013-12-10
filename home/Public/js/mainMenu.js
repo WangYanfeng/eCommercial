@@ -1,4 +1,5 @@
 function getMenuPanel(){
+	var centerTabPanel=Ext.getCmp('centerTabPanel');
 	var menuPanel=Ext.create('Ext.panel.Panel',{
 		layout:'accordion',
 		frame:true,
@@ -7,25 +8,51 @@ function getMenuPanel(){
 			title:'进货单',
 			iconCls:'mainMenuIcon',
 			items:[{
-				xtype:'button',
-				text:'新建',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'新建',
+					cls:'menuButton',
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('newPurchaseOrder');
+							if(form==null){
+								var form=newPurchaseOrderPanel();							
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(Ext.getCmp('newPurchaseOrder'));
+							}
+						}
+					}
 			},{
-				xtype:'button',
-				text:'浏览',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'浏览',
+					cls:'menuButton',
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('viewPurchaseOrder');
+							if(form==null){
+								var form=viewPurchaseOrderPanel();							
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(Ext.getCmp('viewPurchaseOrder'));
+							}
+						}
+					}
 			},{
-				xtype:'button',
-				text:'明细',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'明细',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'数据分析',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'数据分析',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		},{
@@ -37,20 +64,20 @@ function getMenuPanel(){
 				cls:'menuButton',
 				icon:''
 			},{
-				xtype:'button',
-				text:'浏览',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'浏览',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'明细',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'明细',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'数据分析',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'数据分析',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		},{
@@ -58,15 +85,15 @@ function getMenuPanel(){
 			html:'d',
 			iconCls:'mainMenuIcon',
 			items:[{
-				xtype:'button',
-				text:'新建',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'新建',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'浏览',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'浏览',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		},{
@@ -74,30 +101,30 @@ function getMenuPanel(){
 			html:'d',
 			iconCls:'mainMenuIcon',
 			items:[{
-				xtype:'button',
-				text:'新建',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'新建',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'浏览',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'浏览',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		},{
 			title:'分店管理',
 			iconCls:'mainMenuIcon',
 			items:[{
-				xtype:'button',
-				text:'创建分店账号',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'创建分店账号',
+					cls:'menuButton',
+					icon:''
 			},{
-				xtype:'button',
-				text:'浏览分店',
-				cls:'menuButton',
-				icon:''
+					xtype:'button',
+					text:'浏览分店',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		}]

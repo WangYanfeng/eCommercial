@@ -1,0 +1,15 @@
+Ext.define('PurchaseOrders',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'order_id',type:'int'},
+		{name:'ware_id',type:'int'},
+		{name:'ware_num',type:'int'},
+		{name:'order_total_price',type:'int'},
+		{name:'seller_discount',type:'int'},
+		{name:'order_payment',type:'int'},
+		{name:'order_time',type:'string'},
+		{name:'supplier_name',type:'string'},
+		{name:'supplier_phone',type:'int'},
+		{name:'supplier_addr',type:'string'}
+	]
+});
