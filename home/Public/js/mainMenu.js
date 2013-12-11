@@ -52,7 +52,20 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'数据分析',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('analysePurchaseOrder');
+							if(form==null){
+								var form=analysePurchaseOrderPanel();
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(Ext.getCmp('analysePurchaseOrder'));
+							}
+						}
+					}
 			}],
 			cls:'mainMenu'
 		},{

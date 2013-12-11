@@ -15,7 +15,8 @@ function newPurchaseOrderPanel(){
 	return panel;
 }
 function getToolbar_newPurchaseOrder(){
-	var toolbar=new Ext.toolbar.Toolbar({});
+	var toolbar=new Ext.toolbar.Toolbar({
+		padding:'5 5 5 5'});
 	toolbar.add(
 				{text:'从excel文件导入',
 					handler:function(btn){
@@ -26,21 +27,17 @@ function getToolbar_newPurchaseOrder(){
 	var fileMenu=new Ext.menu.Menu({
 		shadow:'frame',
 		plain:true,
-		width:150,
 		bodyStyle:'padding:10px;',
 		items:[{
 				xtype:'numberfield',
 				id:'orderNum',
 				fieldLabel:'输入个数',
 				labelWidth:60,
-				maxWidth:110,
 				minValue:0,
 				maxValue:10,
 				value:2
 			},{
 				xtype:'button',
-				fieldLabel:' a',
-				labelWidth:20,
 				text:'确定',
 				handler:function(){
 					var n=Ext.getCmp('orderNum').getValue();
@@ -78,6 +75,11 @@ function getForm_newPurchaseOrder(n){
 						},
 						defaultType:'textfield',
 						items:[{
+								fieldLabel:'店铺id号',
+								name:'vender_id',
+								readOnly:'true',
+								allowBlank:false
+							},{
 								fieldLabel:'商品名称',
 								allowBlank:false
 							},{
