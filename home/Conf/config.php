@@ -10,11 +10,11 @@ return array(
  	//'DB_PWD'=>'',
 	// 'DB_PORT' => '3306',
     
-	'DB_HOST' =>'10.168.60.98',
-	'DB_NAME' =>$_ENV["JAE_MYSQL_USERNAME"],
+	'DB_HOST' =>'$_ENV["JAE_MYSQL_IP"]',
+	'DB_NAME' =>'$_ENV["JAE_MYSQL_USERNAME"]',
 	'DB_USER' =>'yShgVSvX',
-	'DB_PWD' =>$_ENV["JAE_MYSQL_PASSWORD"],
-	'DB_PORT'=>$_ENV["JAE_MYSQL_PORT"],
+	'DB_PWD' =>'$_ENV["JAE_MYSQL_PASSWORD"]',
+	'DB_PORT'=>'$_ENV["JAE_MYSQL_PORT"]',
 
     'DB_PREFIX'=>'tb_',
     'TMPL_L_DELIM'=>'<{',
