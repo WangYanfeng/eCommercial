@@ -4,18 +4,19 @@ return array(
 
 	'DB_TYPE' => 'mysql',
 
-	'DB_LOCALHOST'=>'127.0.0.1',
-	'DB_NAME'=>'ecommercial',
-    'DB_USER'=>'root',
-    'DB_PWD'=>'',
+	// 'DB_LOCALHOST'=>'127.0.0.1',
+	// 'DB_NAME'=>'ecommercial',
+ 	//'DB_USER'=>'root',
+ 	//'DB_PWD'=>'',
+	// 'DB_PORT' => '3306',
     
-	//'DB_HOST' => 'rdsvminubvmqen3.mysql.rds.aliyuncs.com',
-	//'DB_NAME' => 'dbtu2vloi83lrho2',
-	//'DB_USER' => 'dbtu2vloi83lrho2',
-	//'DB_PWD' => 'sql_game_2013',
-	'DB_PORT' => '3306',
-    'DB_PREFIX'=>'tb_',
+	'DB_HOST' =>'10.168.60.98',
+	'DB_NAME' =>$_ENV["JAE_MYSQL_USERNAME"],
+	'DB_USER' =>'yShgVSvX',
+	'DB_PWD' =>$_ENV["JAE_MYSQL_PASSWORD"],
+	'DB_PORT'=>$_ENV["JAE_MYSQL_PORT"],
 
+    'DB_PREFIX'=>'tb_',
     'TMPL_L_DELIM'=>'<{',
 	'TMPL_R_DELIM'=>'}>',
 );
