@@ -11,8 +11,8 @@ return array(
 	// 'DB_PORT' => '3306',
     
 	'DB_HOST' =>'$_ENV["JAE_MYSQL_IP"]',
-	'DB_NAME' =>'$_ENV["JAE_MYSQL_USERNAME"]',
-	'DB_USER' =>'yShgVSvX',
+	'DB_NAME' =>'$_ENV["JAE_MYSQL_DBNAME"]',
+	'DB_USER' =>'$_ENV["JAE_MYSQL_USERNAME"]',
 	'DB_PWD' =>'$_ENV["JAE_MYSQL_PASSWORD"]',
 	'DB_PORT'=>'$_ENV["JAE_MYSQL_PORT"]',
 
