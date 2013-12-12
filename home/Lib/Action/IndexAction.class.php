@@ -3,17 +3,21 @@
 class IndexAction extends Action {
 	function index(){
     	if($this->isPost()){  
-        $this->redirect('?m=Index&a=mainpage');die();      
+        //$this->redirect('?m=Index&a=mainpage');die();      
       	$vender_name = $_POST['vender_name'];
         $vender_pwd = $_POST['vender_pwd'];
         $DBvenders=D('venders');
         $res=$DBvenders->where("vender_name='" . $vender_name . "' AND vender_pwd='" . $vender_pwd. "'")->find();
         if ($res) {
+            if($res['father_vender']==null){
+              $father_vender=$res['vender_id'];
+            }
             session('vender', array(
                         'vender_id' => $res['vender_id'],
-                        'vender_name' => $res['vender_name']
+                        'vender_name' => $res['vender_name'],
+                        'father_vender'=>$father_vender
             ));
-            //$this->redirect('?m=Index&a=mainpage');die();
+            $this->redirect('?m=Index&a=mainpage');
         }else{
             $this->error('密码错误');
         }
@@ -37,24 +41,74 @@ class IndexAction extends Action {
       }else{
           $res=$DBvenders->add($data);
           if($res){
-              $DBuser_active=D('user_active');
-              $vender_id=$DBvenders->where("vender_name='".$data['vender_name']."'")->getField('id');
-              createTB($vender_id);
+              $vender_id=$DBvenders->where("vender_name='".$data['vender_name']."'")->getField('vender_id');
+              $this->createTB($vender_id);
               echo "{success:true}";
           }
       }      
   }
   public function createTB($id){
-    M()->query("CREATE TABLE `ib_data_bridge$id` (`id` int(11) NOT NULL AUTO_INCREMENT,
-                     `sensor_id` int(11) NOT NULL,
-                     `sensor_model` varchar(255) NOT NULL,
-                     `name` varchar(255) DEFAULT NULL,
-                     `bridge_id` int(11) NOT NULL,
-                     `value` double(255,3) NOT NULL,
-                     `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                     `temperature` double(255,2) DEFAULT NULL,
-                     PRIMARY KEY (`id`)
-                    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+    M()->query("CREATE TABLE `tb_purchaseorders_vender$id` (
+                  `order_id` int(255) NOT NULL AUTO_INCREMENT,
+                  `vender_id` int(255) NOT NULL,
+                  `ware_id` int(255) NOT NULL,
+                  `ware_num` int(255) NOT NULL,
+                  `order_total_price` int(255) NOT NULL,
+                  `seller_discount` int(255) NOT NULL,
+                  `order_payment` int(255) NOT NULL,
+                  `order_time` datetime NOT NULL,
+                  `supplier_name` varchar(255) DEFAULT NULL,
+                  `supplier_phone` varchar(255) DEFAULT NULL,
+                  `supplier_addr` varchar(255) DEFAULT NULL,
+                  PRIMARY KEY (`order_id`)
+                  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+    M()->query("CREATE TABLE `tb_saleorders_vender$id` (
+                  `order_id` int(255) NOT NULL AUTO_INCREMENT,
+                  `vender_id` int(255) NOT NULL,
+                  `ware_id` int(255) NOT NULL,
+                  `ware_num` int(255) NOT NULL,
+                  `order_total_price` int(255) NOT NULL,
+                  `saller_discount` int(255) NOT NULL DEFAULT '0',
+                  `order_payment` int(255) NOT NULL,
+                  `order_time` datetime NOT NULL,
+                  `customer_name` varchar(255) DEFAULT NULL,
+                  `customer_addr` varchar(255) DEFAULT NULL,
+                  `customer_phone` int(25) DEFAULT NULL,
+                  `saleperson` varchar(255) NOT NULL,
+                  `other` varchar(255) NULL,
+                  PRIMARY KEY (`order_id`)
+                  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+    M()->query("CREATE TABLE `tb_cancelorders_vender$id` (
+                  `order_id` int(255) NOT NULL AUTO_INCREMENT,
+                  `vender_id` int(255) NOT NULL,
+                  `ware_id` int(255) NOT NULL,
+                  `ware_num` int(255) NOT NULL,
+                  `total_price` int(255) NOT NULL,
+                  `order_time` datetime NOT NULL,
+                  `customer_name` varchar(255) DEFAULT NULL,
+                  `others` varchar(255) DEFAULT NULL,
+                  PRIMARY KEY (`order_id`)
+                  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+    M()->query("CREATE TABLE `tb_wares_vender$id` (
+                  `ware_id` int(255) NOT NULL AUTO_INCREMENT,
+                  `ware_name` varchar(255) NOT NULL,
+                  `category` varchar(255) NOT NULL,
+                  `brand_name` varchar(255) NOT NULL,
+                  `cost_price` int(255) DEFAULT '0',
+                  `market_price` int(255) NOT NULL,
+                  `productor` varchar(255) NOT NULL,
+                  `in_time` datetime NOT NULL,
+                  PRIMARY KEY (`ware_id`)
+                  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8");
+    M()->query("ALTER TABLE `tb_cancelorders_vender$id`
+            ADD CONSTRAINT `tb_cancelorders_vender$id` FOREIGN KEY (`ware_id`) REFERENCES `tb_wares_vender$id` (`ware_id`);
+          ");
+    M()->query("ALTER TABLE `tb_purchaseorders_vender$id`
+            ADD CONSTRAINT `tb_purchaseorders_vender$id` FOREIGN KEY (`ware_id`) REFERENCES `tb_wares_vender$id` (`ware_id`);
+          ");
+    M()->query("ALTER TABLE `tb_saleorders_vender$id`
+            ADD CONSTRAINT `tb_saleorders_vender$id` FOREIGN KEY (`ware_id`) REFERENCES `tb_wares_vender$id` (`ware_id`);
+      ");
   }
   public function logout(){
       session(null);

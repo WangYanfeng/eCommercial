@@ -54,6 +54,7 @@ function getToolbar_newPurchaseOrder(){
 function getForm_newPurchaseOrder(n){
 	var formsPanel=Ext.create('Ext.panel.Panel',{
 		layout:'column',
+		html:'<div id="newPurchaseOrdertips" style="height:20px;color:red;"></div>',
 		listeners:{
 			afterRender:function(){
 				for(var i=0;i<n;i++){
@@ -78,16 +79,46 @@ function getForm_newPurchaseOrder(n){
 								fieldLabel:'店铺id号',
 								name:'vender_id',
 								readOnly:'true',
+								value:vender_id,
+								allowBlank:false
+							},{
+								fieldLabel:'总店id号',
+								name:'father_vender',
+								readOnly:'true',
+								value:father_vender,
 								allowBlank:false
 							},{
 								fieldLabel:'商品名称',
-								allowBlank:false
+								allowBlank:false,
+								name:''+i,//通过id传参数i。以得到ware_id_fileld i
+								listeners:{
+									blur:function(){
+										//失去激活事件触发向后台异步式取商品的id号
+										var ware_name=this.getValue();
+										var i=this.getName();//获取外部的循环参数i
+										Ext.Ajax.request({
+											url:'?m=PurchaseOrder&a=getWareId',
+											method:'POST',
+											params:{
+												vender_id:vender_id,
+												ware_name:ware_name
+											},
+											success:function(response){
+												var ware_id_field=Ext.getCmp('ware_id_field'+i);
+												ware_id_field.setValue(response.responseText);
+											}
+										});
+									}
+								}
 							},{
 								fieldLabel:'商品编号',
 								name:'ware_id',
+								id:'ware_id_field'+i,							
+								readOnly:'true',
 								xtype:'numberfield',
 								hideTrigger:true,
-								allowDecimals:false
+								allowDecimals:false,
+								blankText:'请重新输入商品名称，或者在商品档案中入库新商品'
 							},{
 								fieldLabel:'商品个数',
 								xtype:'numberfield',
@@ -139,17 +170,19 @@ function getForm_newPurchaseOrder(n){
 				        disabled: true,
 								margin:'10 0 10 30',
 				        handler: function() {
+				        	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"请稍等！");
 				          var form = this.up('form').getForm();
 				          if (form.isValid()) {
 				            form.submit({
 				            		clientValidation:true,
-				            		url:'__APP__/',
+				            		url:'?m=PurchaseOrder&a=newOrder',
 				            		method:'POST',
 				                success: function(form, action) {
-				                   Ext.Msg.alert('Success','单据提交成功！');
+				                	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"单据提交成功！");
+				                	setTimeout(function(){Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips')," ");form.reset();},3000);
 				                },
 				                failure: function(form, action) {
-				                    Ext.Msg.alert('Failed', '单据提交失败，请重试！');
+				                	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"单据提交失败，请重试！");
 				                }
 				            });
 				          }
@@ -160,6 +193,7 @@ function getForm_newPurchaseOrder(n){
 								width:60,
 								margin:'10 0 10 30',
 								handler:function(){
+									Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips')," ");
 									this.up('form').getForm().reset();
 								}
 							}]

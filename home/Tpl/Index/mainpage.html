@@ -13,7 +13,10 @@
 		<script src="__ROOT__/home/Public/js/PurchaseOrder/viewPurchaseOrder.js"></script>
 		<script src="__ROOT__/home/Public/js/PurchaseOrder/analysePurchaseOrder.js"></script>
 		<script>
-			Ext.onReady(function(){				
+			Ext.onReady(function(){
+				//全局变量。获取session值，商家的id号
+				vender_id='<{$_SESSION[\'vender\'][vender_id]}>';
+				father_vender='<{$_SESSION[\'vender\'][father_vender]}>';
 				var north={
 							region:'north',
 							height:100,
