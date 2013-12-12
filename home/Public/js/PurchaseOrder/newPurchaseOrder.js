@@ -136,7 +136,7 @@ function getForm_newPurchaseOrder(n){
 								fieldLabel:'折扣',
 								name:'seller_discount',
 								size:30,
-								minValue:'1',
+								minValue:'0',
 								xtype:'numberfield'
 							},{
 								fieldLabel:'支付金额',
