@@ -16,12 +16,12 @@ function getMenuPanel(){
 						click:function(){
 							var form=Ext.getCmp('newPurchaseOrder');
 							if(form==null){
-								var form=newPurchaseOrderPanel();							
+								form=newPurchaseOrderPanel();							
 								centerTabPanel.add(form);
 								centerTabPanel.setActiveTab(form);
 							}
 							else{
-								centerTabPanel.setActiveTab(Ext.getCmp('newPurchaseOrder'));
+								centerTabPanel.setActiveTab(form);
 							}
 						}
 					}
@@ -34,12 +34,12 @@ function getMenuPanel(){
 						click:function(){
 							var form=Ext.getCmp('viewPurchaseOrder');
 							if(form==null){
-								var form=viewPurchaseOrderPanel();							
+								form=viewPurchaseOrderPanel();							
 								centerTabPanel.add(form);
 								centerTabPanel.setActiveTab(form);
 							}
 							else{
-								centerTabPanel.setActiveTab(Ext.getCmp('viewPurchaseOrder'));
+								centerTabPanel.setActiveTab(form);
 							}
 						}
 					}
@@ -57,12 +57,12 @@ function getMenuPanel(){
 						click:function(){
 							var form=Ext.getCmp('analysePurchaseOrder');
 							if(form==null){
-								var form=analysePurchaseOrderPanel();
+								form=analysePurchaseOrderPanel();
 								centerTabPanel.add(form);
 								centerTabPanel.setActiveTab(form);
 							}
 							else{
-								centerTabPanel.setActiveTab(Ext.getCmp('analysePurchaseOrder'));
+								centerTabPanel.setActiveTab(form);
 							}
 						}
 					}
@@ -75,12 +75,36 @@ function getMenuPanel(){
 				xtype:'button',
 				text:'新建',
 				cls:'menuButton',
-				icon:''
+				icon:'',
+				listeners:{
+					click:function(){
+						var form=Ext.getCmp('newSaleOrder');
+						if(form==null){
+							form=newSaleOrderPanel();
+							centerTabPanel.add(form);
+							centerTabPanel.setActiveTab(form);
+						}else{
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+				}
 			},{
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('viewSaleOrder');
+							if(form==null){
+								form=viewSaleOrderPanel();
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}else{
+								centerTabPanel.setActiveTab(form);
+							}
+						}
+					}
 			},{
 					xtype:'button',
 					text:'明细',
@@ -90,28 +114,65 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'数据分析',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('analyseSaleOrder');
+							if(form==null){
+								form=analyseSaleOrderPanel();
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(form);
+							}
+						}
+					}
 			}],
 			cls:'mainMenu'
 		},{
 			title:'销售退货单',
-			html:'d',
 			iconCls:'mainMenuIcon',
 			items:[{
 					xtype:'button',
 					text:'新建',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('newCancelOrder');
+							if(form==null){
+								form=newCancelOrderPanel();
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(form);
+							}
+						}
+					}
 			},{
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('viewCancelOrder');
+							if(form==null){
+								form=viewCancelOrderPanel();
+								centerTabPanel.add(form);
+								centerTabPanel.setActiveTab(form);
+							}
+							else{
+								centerTabPanel.setActiveTab(form);
+							}
+						}
+					}
 			}],
 			cls:'mainMenu'
 		},{
 			title:'商品档案',
-			html:'d',
 			iconCls:'mainMenuIcon',
 			items:[{
 					xtype:'button',

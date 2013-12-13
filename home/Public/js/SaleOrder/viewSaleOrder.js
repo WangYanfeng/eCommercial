@@ -1,11 +1,11 @@
-function viewPurchaseOrderPanel(){
+function viewSaleOrderPanel () {
 	var store=new Ext.data.JsonStore({
 		autoDestroy:true,
 		autoLoad:true,
-		model:'PurchaseOrders',
+		model:'SaleOrders',
 		proxy:{
 			type:'ajax',
-			url:'?m=PurchaseOrder&a=getOrders&father_vender='+father_vender,
+			url:'?m=SaleOrder&a=getOrders&father_vender='+father_vender,
 			reader:{
 				type:'json',
 				root:'orders',
@@ -31,17 +31,18 @@ function viewPurchaseOrderPanel(){
 				{header: "折扣", dataIndex: 'seller_discount'},
 				{header: "支付金额", dataIndex: 'order_payment'},
 				{header: "订单时间", dataIndex: 'order_time',width:150},
-				{header: "供应商名称", dataIndex: 'supplier_name'},
-				{header: "供应商电话", dataIndex: 'supplier_phone'},
-				{header: "供应商地址", dataIndex: 'supplier_addr'},
+				{header: "顾客名称", dataIndex: 'customer_name'},
+				{header: "顾客电话", dataIndex: 'customer_phone'},
+				{header: "顾客联系地址", dataIndex: 'customer_addr'},
+				{header:"销售员",dataIndex:'saleperson'},
 				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
 		]
 	});
-	var panel=Ext.create('Ext.panel.Panel',{
-		title:'浏览进货单',
-		id:'viewPurchaseOrder',
+	var panel=new Ext.panel.Panel({
+		title:'浏览销售单',
+		id:'viewSaleOrder',
 		closable:true,
-		tbar:getToolbar_viewPurchaseOrder(),
+		tbar:getToolbar_viewSaleOrder(),
 		layout:'fit',
 		bodyStyle:'background-color:#ffffff;overflow-y:auto',
 		listeners:{
@@ -52,7 +53,7 @@ function viewPurchaseOrderPanel(){
 	});
 	return panel;
 }
-function getToolbar_viewPurchaseOrder(){
+function getToolbar_viewSaleOrder(){
 	var toolbar=new Ext.toolbar.Toolbar({
 		padding:'5 5 5 5'
 	});
