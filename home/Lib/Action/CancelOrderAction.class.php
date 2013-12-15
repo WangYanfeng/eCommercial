@@ -23,8 +23,8 @@ class CancelOrderAction extends Action
 	function getOrders(){
 		//viewPurchaseOrder.js调用，查看进货单
 		$father_vender=I('father_vender');
-		$DBsaleorders=D('cancelorders_vender'.$father_vender);
-		$res=$DBsaleorders->select();
+		$DBcancelorders=D('cancelorders_vender'.$father_vender);
+		$res=$DBcancelorders->select();
 		//dump(json_encode($res));
 		echo "{orders:".json_encode($res)."}";
 	}

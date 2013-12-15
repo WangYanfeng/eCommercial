@@ -31,7 +31,7 @@ Ext.define('SaleOrders',{
 		{name:'saleperson',type:'string'}
 	]
 });
-Ext.define('CanelOrders',{
+Ext.define('CancelOrders',{
 	extend:'Ext.data.Model',
 	fields:[
 		{name:'order_id',type:'int'},
@@ -42,6 +42,28 @@ Ext.define('CanelOrders',{
 		{name:'order_time',type:'string'},
 		{name:'customer_name',type:'string'},
 		{name:'others',type:'string'}
+	]
+});
+Ext.define('Wares',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'ware_id',type:'int'},
+		{name:'ware_name',type:'string'},
+		{name:'cost_price',type:'int'},
+		{name:'in_time',type:'string'},
+		{name:'brand_name',type:'string'},
+		{name:'market_price',type:'int'},
+		{name:'productor',type:'string'}
+	]
+});
+Ext.define('Venders',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'vender_id',type:'int'},
+		{name:'vender_name',type:'string'},
+		{name:'vender_addr',type:'int'},
+		{name:'in_time',type:'string'},
+		{name:'vender_phone',type:'int'}
 	]
 });
 //
@@ -72,3 +94,12 @@ Ext.apply(Ext.form.field.VTypes,{
 	},
 	dateRangeText:'开始日期不能大于结束日期'
 });
+Ext.apply(Ext.form.VTypes,{ 
+    password:function(val,field){ 
+       if(field.confirmTo){
+       		var pwd=Ext.getCmp(field.confirmTo);
+          return (val==pwd.getValue()); 
+       }
+       return true;
+    } 
+}); 

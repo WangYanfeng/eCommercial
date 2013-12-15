@@ -30,7 +30,7 @@ function getToolbar_newCancelOrder(){
 		bodyStyle:'padding:10px;',
 		items:[{
 				xtype:'numberfield',
-				id:'orderNum',
+				id:'cancelOrderNum',
 				fieldLabel:'输入个数',
 				labelWidth:60,
 				minValue:0,
@@ -40,7 +40,7 @@ function getToolbar_newCancelOrder(){
 				xtype:'button',
 				text:'确定',
 				handler:function(){
-					var n=Ext.getCmp('orderNum').getValue();
+					var n=Ext.getCmp('cancelOrderNum').getValue();
 					var formsPanel=getForm_newCancelOrder(n);
 					var panel=Ext.getCmp('newCancelOrder');
 					panel.removeAll();
@@ -100,7 +100,7 @@ function getForm_newCancelOrder(n){
 											url:'?m=PurchaseOrder&a=getWareId',
 											method:'POST',
 											params:{
-												vender_id:vender_id,
+												vender_id:father_vender,
 												ware_name:ware_name
 											},
 											success:function(response){

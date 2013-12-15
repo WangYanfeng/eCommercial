@@ -99,7 +99,7 @@ function getForm_newSaleOrder(n){
 											url:'?m=PurchaseOrder&a=getWareId',
 											method:'POST',
 											params:{
-												vender_id:vender_id,
+												vender_id:father_vender,
 												ware_name:ware_name
 											},
 											success:function(response){

@@ -9,9 +9,7 @@ class IndexAction extends Action {
         $DBvenders=D('venders');
         $res=$DBvenders->where("vender_name='" . $vender_name . "' AND vender_pwd='" . $vender_pwd. "'")->find();
         if ($res) {
-            if($res['father_vender']==null){
-              $father_vender=$res['vender_id'];
-            }
+            $father_vender=$res['father_vender'];
             session('vender', array(
                         'vender_id' => $res['vender_id'],
                         'vender_name' => $res['vender_name'],
@@ -42,6 +40,7 @@ class IndexAction extends Action {
           $res=$DBvenders->add($data);
           if($res){
               $vender_id=$DBvenders->where("vender_name='".$data['vender_name']."'")->getField('vender_id');
+              $DBvenders->where("vender_id='".$vender_id."'")->setField('father_vender',$vender_id);
               $this->createTB($vender_id);
               echo "{success:true}";
           }

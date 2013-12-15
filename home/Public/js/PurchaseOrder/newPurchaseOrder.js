@@ -30,7 +30,7 @@ function getToolbar_newPurchaseOrder(){
 		bodyStyle:'padding:10px;',
 		items:[{
 				xtype:'numberfield',
-				id:'orderNum',
+				id:'purchaseOrderNum',
 				fieldLabel:'输入个数',
 				labelWidth:60,
 				minValue:0,
@@ -40,7 +40,7 @@ function getToolbar_newPurchaseOrder(){
 				xtype:'button',
 				text:'确定',
 				handler:function(){
-					var n=Ext.getCmp('orderNum').getValue();
+					var n=Ext.getCmp('purchaseOrderNum').getValue();
 					var formsPanel=getForm_newPurchaseOrder(n);
 					var panel=Ext.getCmp('newPurchaseOrder');
 					panel.removeAll();
@@ -100,7 +100,7 @@ function getForm_newPurchaseOrder(n){
 											url:'?m=PurchaseOrder&a=getWareId',
 											method:'POST',
 											params:{
-												vender_id:vender_id,
+												vender_id:father_vender,
 												ware_name:ware_name
 											},
 											success:function(response){

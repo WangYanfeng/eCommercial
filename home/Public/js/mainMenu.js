@@ -18,11 +18,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=newPurchaseOrderPanel();							
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			},{
@@ -36,11 +33,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=viewPurchaseOrderPanel();							
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			},{
@@ -59,11 +53,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=analysePurchaseOrderPanel();
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			}],
@@ -82,10 +73,8 @@ function getMenuPanel(){
 						if(form==null){
 							form=newSaleOrderPanel();
 							centerTabPanel.add(form);
-							centerTabPanel.setActiveTab(form);
-						}else{
-							centerTabPanel.setActiveTab(form);
 						}
+						centerTabPanel.setActiveTab(form);
 					}
 				}
 			},{
@@ -99,10 +88,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=viewSaleOrderPanel();
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
-							}else{
-								centerTabPanel.setActiveTab(form);
 							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			},{
@@ -121,11 +108,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=analyseSaleOrderPanel();
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			}],
@@ -144,11 +128,8 @@ function getMenuPanel(){
 							if(form==null){
 								form=newCancelOrderPanel();
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
 			},{
@@ -162,13 +143,30 @@ function getMenuPanel(){
 							if(form==null){
 								form=viewCancelOrderPanel();
 								centerTabPanel.add(form);
-								centerTabPanel.setActiveTab(form);
 							}
-							else{
-								centerTabPanel.setActiveTab(form);
-							}
+							centerTabPanel.setActiveTab(form);
 						}
 					}
+			}],
+			cls:'mainMenu'
+		},{
+			title:'综合处理中心',
+			iconCls:'mainMenuIcon',
+			items:[{
+					xtype:'button',
+					text:'综合分析',
+					cls:'menuButton',
+					icon:''
+			},{
+					xtype:'button',
+					text:'利润分析',
+					cls:'menuButton',
+					icon:''
+			},{
+					xtype:'button',
+					text:'类型分布',
+					cls:'menuButton',
+					icon:''
 			}],
 			cls:'mainMenu'
 		},{
@@ -178,12 +176,32 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'新建',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('newWare');
+							if(form==null){
+								form=newWarePanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			},{
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('viewWare');
+							if (form==null) {
+								form=viewWarePanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			}],
 			cls:'mainMenu'
 		},{
@@ -193,12 +211,35 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'创建分店账号',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							if(vender_id==father_vender){
+								var form=Ext.getCmp('newVender');
+								if(form==null){
+									form=newVenderPanel();
+									centerTabPanel.add(form);
+								}
+								centerTabPanel.setActiveTab(form);
+							}
+							else{Ext.Msg.alert("易通小提示","对不起，您没有创建分店的权限。");}						
+						}
+					}
 			},{
 					xtype:'button',
 					text:'浏览分店',
 					cls:'menuButton',
-					icon:''
+					icon:'',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('viewVender');
+							if (form==null) {
+								form=viewVenderPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			}],
 			cls:'mainMenu'
 		}]
