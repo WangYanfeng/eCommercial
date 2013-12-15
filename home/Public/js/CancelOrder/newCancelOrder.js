@@ -1,20 +1,20 @@
-function newPurchaseOrderPanel(){
+function newCancelOrderPanel() {
 	var panel=new Ext.panel.Panel({
-		title:'新建进货单',
-		id:'newPurchaseOrder',
+		title:'新建退货单',
+		id:'newCancelOrder',
 		closable:true,
-		tbar:getToolbar_newPurchaseOrder(),
+		tbar:getToolbar_newCancelOrder(),
 		bodyStyle:'background-color:#ffffff;overflow-y:auto',
 		listeners:{
 			afterRender:function(){
-					var formsPanel=getForm_newPurchaseOrder(1);
+					var formsPanel=getForm_newCancelOrder(1);
 					this.add(formsPanel);
 			}
 		}
 	});
 	return panel;
 }
-function getToolbar_newPurchaseOrder(){
+function getToolbar_newCancelOrder(){
 	var toolbar=new Ext.toolbar.Toolbar({
 		padding:'5 5 5 5'});
 	toolbar.add(
@@ -41,8 +41,8 @@ function getToolbar_newPurchaseOrder(){
 				text:'确定',
 				handler:function(){
 					var n=Ext.getCmp('orderNum').getValue();
-					var formsPanel=getForm_newPurchaseOrder(n);
-					var panel=Ext.getCmp('newPurchaseOrder');
+					var formsPanel=getForm_newCancelOrder(n);
+					var panel=Ext.getCmp('newCancelOrder');
 					panel.removeAll();
 					panel.add(formsPanel);
 				}
@@ -51,15 +51,15 @@ function getToolbar_newPurchaseOrder(){
 	toolbar.add({text:'新建多个单据',menu:fileMenu});
 	return toolbar;
 }
-function getForm_newPurchaseOrder(n){
+function getForm_newCancelOrder(n){
 	var formsPanel=Ext.create('Ext.panel.Panel',{
 		layout:'column',
-		html:'<div id="newPurchaseOrdertips" style="height:20px;color:red;"></div>',
+		html:'<div id="newCancelOrdertips" style="height:20px;color:red;"></div>',
 		listeners:{
 			afterRender:function(){
 				for(var i=0;i<n;i++){
 					var form=new Ext.form.Panel({
-						title:'进货单'+(i+1),
+						title:'退货单'+(i+1),
 						columnWidth:.5,
 						minWidth:350,
 						bodyStyle:'padding-top:10px;padding-left:40px;',
@@ -104,7 +104,7 @@ function getForm_newPurchaseOrder(n){
 												ware_name:ware_name
 											},
 											success:function(response){
-												var ware_id_field=Ext.getCmp('ware_id_field'+i);
+												var ware_id_field=Ext.getCmp('cancelorder_ware_id_field'+i);
 												ware_id_field.setValue(response.responseText);
 											}
 										});
@@ -113,7 +113,7 @@ function getForm_newPurchaseOrder(n){
 							},{
 								fieldLabel:'商品编号',
 								name:'ware_id',
-								id:'ware_id_field'+i,							
+								id:'cancelorder_ware_id_field'+i,							
 								readOnly:'true',
 								xtype:'numberfield',
 								hideTrigger:true,
@@ -133,30 +133,12 @@ function getForm_newPurchaseOrder(n){
 								size:30,
 								name:'order_total_price'
 							},{
-								fieldLabel:'折扣',
-								name:'seller_discount',
-								size:30,
-								minValue:'0',
-								xtype:'numberfield'
-							},{
-								fieldLabel:'支付金额',
-								xtype:'numberfield',
-								size:30,
-								minValue:'1',
-								name:'order_payment'
-							},{
-								fieldLabel:'供应商名称',
+								fieldLabel:'顾客名称',
 								allowBlank:true,							
-								name:'supplier_name'
+								name:'customer_name'
 							},{
-								fieldLabel:'供应商电话',
-								name:'supplier_phone',
-								regex:/^[0-9]*$/,
-								invalidText:'请输入数字',
-								allowBlank:true
-							},{
-								fieldLabel:'供应商地址',
-								name:'supplier_addr',
+								fieldLabel:'意见反馈',
+								name:'others',
 								xtype:'textarea',
 								height:60,
 								width:320,
@@ -170,19 +152,19 @@ function getForm_newPurchaseOrder(n){
 				        disabled: true,
 								margin:'10 0 10 30',
 				        handler: function() {
-				        	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"请稍等！");
+				        	Ext.core.DomHelper.overwrite(Ext.get('newCancelOrdertips'),"请稍等！");
 				          var form = this.up('form').getForm();
 				          if (form.isValid()) {
 				            form.submit({
 				            		clientValidation:true,
-				            		url:'?m=PurchaseOrder&a=newOrder',
+				            		url:'?m=CancelOrder&a=newOrder',
 				            		method:'POST',
 				                success: function(form, action) {
-				                	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"单据提交成功！");
-				                	setTimeout(function(){Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips')," ");form.reset();},3000);
+				                	Ext.core.DomHelper.overwrite(Ext.get('newCancelOrdertips'),"单据提交成功！");
+				                	setTimeout(function(){Ext.core.DomHelper.overwrite(Ext.get('newCancelOrdertips')," ");form.reset();},3000);
 				                },
 				                failure: function(form, action) {
-				                	Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips'),"单据提交失败，请重试！");
+				                	Ext.core.DomHelper.overwrite(Ext.get('newCancelOrdertips'),"单据提交失败，请重试！");
 				                }
 				            });
 				          }
@@ -193,7 +175,7 @@ function getForm_newPurchaseOrder(n){
 								width:60,
 								margin:'10 0 10 30',
 								handler:function(){
-									Ext.core.DomHelper.overwrite(Ext.get('newPurchaseOrdertips')," ");
+									Ext.core.DomHelper.overwrite(Ext.get('newCancelOrdertips')," ");
 									this.up('form').getForm().reset();
 								}
 							}]
@@ -205,4 +187,3 @@ function getForm_newPurchaseOrder(n){
 	});
 	return formsPanel;
 }
-

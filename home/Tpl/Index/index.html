@@ -62,13 +62,7 @@
             form.submit({
             		clientValidation:true,
             		url:'__APP__/Index/index',
-            		method:'POST',
-                success: function(form, action) {
-                   Ext.Msg.alert('Success','登陆成功');
-                },
-                failure: function(form, action) {
-                    Ext.Msg.alert('Failed', action.failureType);
-                }
+            		method:'POST'
             });
           }
         }
@@ -148,11 +142,11 @@
             		method:'POST',
 								url:'__APP__/Index/regist',
                 success: function(form, action) {
-                	Ext.core.DomHelper.append(Ext.get('tips'),"注册成功！");
+                	Ext.core.DomHelper.overwrite(Ext.get('tips'),"注册成功！");
                 	setTimeout('window.location.href="__APP__/Index/index"',2000);
                 },
                 failure: function(form, action) {
-                  Ext.core.DomHelper.append(Ext.get('tips'),"该账号已存在！");
+                  Ext.core.DomHelper.overwrite(Ext.get('tips'),"该账号已存在！");
                 }
             });
           }

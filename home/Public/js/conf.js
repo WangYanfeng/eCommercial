@@ -14,7 +14,36 @@ Ext.define('PurchaseOrders',{
 		{name:'supplier_addr',type:'string'}
 	]
 });
-
+Ext.define('SaleOrders',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'order_id',type:'int'},
+		{name:'vender_id',type:'int'},
+		{name:'ware_id',type:'int'},
+		{name:'ware_num',type:'int'},
+		{name:'order_total_price',type:'int'},
+		{name:'seller_discount',type:'int'},
+		{name:'order_payment',type:'int'},
+		{name:'order_time',type:'string'},
+		{name:'customer_name',type:'string'},
+		{name:'customer_phone',type:'int'},
+		{name:'customer_addr',type:'string'},
+		{name:'saleperson',type:'string'}
+	]
+});
+Ext.define('CanelOrders',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'order_id',type:'int'},
+		{name:'vender_id',type:'int'},
+		{name:'ware_id',type:'int'},
+		{name:'ware_num',type:'int'},
+		{name:'order_total_price',type:'int'},
+		{name:'order_time',type:'string'},
+		{name:'customer_name',type:'string'},
+		{name:'others',type:'string'}
+	]
+});
 //
 Ext.apply(Ext.form.field.VTypes,{
 	dateRange:function (val,field) {

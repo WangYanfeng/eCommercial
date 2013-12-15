@@ -1,10 +1,10 @@
-function analysePurchaseOrderPanel(){
+function analyseSaleOrderPanel(){
 	var store=new Ext.data.JsonStore({		
 		autoDestroy:true,
 		autoLoad:true,
 		proxy:{
 			type:'ajax',
-			url:'?m=PurchaseOrder&a=getAnalyseData&father_vender='+father_vender
+			url:'?m=SaleOrder&a=getAnalyseData&father_vender='+father_vender
 		},
 		fields:['month','data']
 	});
@@ -54,10 +54,10 @@ function analysePurchaseOrderPanel(){
 		}]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
-		title:'进货单数据分析',
-		id:'analysePurchaseOrder',
+		title:'销售单数据分析',
+		id:'analyseSaleOrder',
 		closable:true,
-		tbar:getToolbar_analysePurchaseOrder(store),
+		tbar:getToolbar_analyseSaleOrder(store),
 		layout:'fit',
 		bodyStyle:'background-color:#ffffff;overflow:auto',
 		listeners:{
@@ -68,7 +68,7 @@ function analysePurchaseOrderPanel(){
 	});
 	return panel;
 }
-function getToolbar_analysePurchaseOrder(store){
+function getToolbar_analyseSaleOrder(store){
 	var form=new Ext.form.Panel({
 		layout:'column',
 		defaults:{
@@ -88,17 +88,17 @@ function getToolbar_analysePurchaseOrder(store){
 			value:father_vender,
 			hidden:true
 		},{
-			id:'analysePurchaseorder_beginDate',
+			id:'analyseSaleorder_beginDate',
 			name:'beginDate',
 			fieldLabel:'起始时间',
 			msgTarget:'side',
-			dateRange:{begin:'analysePurchaseorder_beginDate',end:'analysePurchaseorder_endDate'},
+			dateRange:{begin:'analyseSaleorder_beginDate',end:'analyseSaleorder_endDate'},
 			vtype:'dateRange'
 		},{
-			id:'analysePurchaseorder_endDate',
+			id:'analyseSaleorder_endDate',
 			name:'endDate',
 			fieldLabel:'结束时间',
-			dateRange:{begin:'analysePurchaseorder_beginDate',end:'analysePurchaseorder_endDate'},
+			dateRange:{begin:'analyseSaleorder_beginDate',end:'analyseSaleorder_endDate'},
 			vtype:'dateRange',
 			maxValue:new Date(),
 			value:new Date()
@@ -114,7 +114,7 @@ function getToolbar_analysePurchaseOrder(store){
 					//Ext.
 					form.submit({
 						clientValidation:true,
-						url:'?m=PurchaseOrder&a=getAnalyseData',
+						url:'?m=SaleOrder&a=getAnalyseData',
 						method:'POST',
 						success:function(form, action) {
 							store.loadData(action.result.datas);
