@@ -37,11 +37,10 @@ class IndexAction extends Action {
       if($res){
           echo "{success:false}";
       }else{
-          $res=$DBvenders->add($data);
-          if($res){
-              $vender_id=$DBvenders->where("vender_name='".$data['vender_name']."'")->getField('vender_id');
-              $DBvenders->where("vender_id='".$vender_id."'")->setField('father_vender',$vender_id);
-              $this->createTB($vender_id);
+          $add_res=$DBvenders->add($data);
+          if($add_res){
+              $DBvenders->where("vender_id='".$add_res."'")->setField('father_vender',$add_res);
+              $this->createTB($add_res);
               echo "{success:true}";
           }
       }      

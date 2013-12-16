@@ -179,12 +179,15 @@ function getMenuPanel(){
 					icon:'',
 					listeners:{
 						click:function(){
-							var form=Ext.getCmp('newWare');
-							if(form==null){
-								form=newWarePanel();
-								centerTabPanel.add(form);
+							if(vender_id==father_vender){
+								var form=Ext.getCmp('newWare');
+								if(form==null){
+									form=newWarePanel();
+									centerTabPanel.add(form);
+								}
+								centerTabPanel.setActiveTab(form);
 							}
-							centerTabPanel.setActiveTab(form);
+							else{Ext.Msg.alert("易通小提示","对不起，您没有创建分店的权限。");}						
 						}
 					}
 			},{

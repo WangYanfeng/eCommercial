@@ -23,12 +23,19 @@ function viewVenderPanel() {
 		autoExpandColumn:'ware_id',
 		columns:[
 				Ext.create('Ext.grid.RowNumberer',{text:'行号',width:50}),
-				{header: "分店编号", dataIndex: 'vender_id',sortable:true},
-				{header: "分店名称", dataIndex: 'vender_name'},
-				{header: "分店地址", dataIndex: 'vender_addr'},
-				{header: "分店电话", dataIndex: 'vender_phone'},
-				{header: "创建时间", dataIndex: 'in_time'},
-				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
+				{header: "店铺编号", dataIndex: 'vender_id',sortable:true},
+				{header: "店铺名称", dataIndex: 'vender_name'},
+				{header: "店铺地址", dataIndex: 'vender_addr'},
+				{header: "店铺联系电话", dataIndex: 'vender_phone'},
+				{header: "创建时间", dataIndex: 'in_time',width:150},
+				{header:"操作",xtype:'actioncolumn',icon:'/ecommercial/home/Public/img/delete.png',
+				 handler:function(){
+					if(vender_id==father_vender){
+						alert("功能扩展");
+					}
+					else{Ext.Msg.alert("易通小提示","对不起，您没有创建分店的权限。");}
+				 }
+				}
 		]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
