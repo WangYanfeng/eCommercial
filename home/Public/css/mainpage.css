@@ -42,7 +42,7 @@
 }
 
 
-.mainMenuIcon_newPurchaseOrder{
+/*.mainMenuIcon_newPurchaseOrder{
 	background-image: url(/home/Public/img/purchaseOrder.png);
 	width: 35px;height: 35px;
 }
@@ -96,10 +96,10 @@
 }
 .saleGridButtonImg{
 	background: url(/home/Public/img/saleGrid.png)  left top no-repeat;!important;
-}
+}*/
 
 
-/*.mainMenuIcon_newPurchaseOrder{
+.mainMenuIcon_newPurchaseOrder{
 	background-image: url(/ecommercial/home/Public/img/purchaseOrder.png);
 	width: 35px;height: 35px;
 }
@@ -153,4 +153,4 @@
 }
 .saleGridButtonImg{
 	background: url(/ecommercial/home/Public/img/saleGrid.png)  left top no-repeat;!important;
-}*/
+}

@@ -5,7 +5,7 @@ function getMenuPanel(){
 		frame:true,
 		width:150,
 		items:[{
-			title:'进货单',
+			title:'商品入库',
 			iconCls:'mainMenuIcon_newPurchaseOrder',
 			items:[{
 					xtype:'button',
@@ -60,7 +60,7 @@ function getMenuPanel(){
 			}],
 			cls:'mainMenu'
 		},{
-			title:'销售单',
+			title:'商品出库',
 			iconCls:'mainMenuIcon_newSaleOrder',
 			items:[{
 				xtype:'button',
@@ -156,7 +156,17 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'综合分析',
 					cls:'menuButton',
-					iconCls:'allAnalyseButtonImg'
+					iconCls:'allAnalyseButtonImg',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('totalOrderAnalyse');
+							if(form==null){
+								form=totalOrderAnalysePanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			},{
 					xtype:'button',
 					text:'利润分析',

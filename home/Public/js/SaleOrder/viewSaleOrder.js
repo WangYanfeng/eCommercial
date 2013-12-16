@@ -35,7 +35,7 @@ function viewSaleOrderPanel () {
 				{header: "顾客电话", dataIndex: 'customer_phone'},
 				{header: "顾客联系地址", dataIndex: 'customer_addr'},
 				{header:"销售员",dataIndex:'saleperson'},
-				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]
 	});
 	var panel=new Ext.panel.Panel({

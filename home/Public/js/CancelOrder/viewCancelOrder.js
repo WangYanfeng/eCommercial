@@ -31,7 +31,7 @@ function viewCancelOrderPanel () {
 				{header: "订单时间", dataIndex: 'order_time',width:150},
 				{header: "顾客名称", dataIndex: 'customer_name'},
 				{header:"意见反馈",dataIndex:'others'},
-				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]
 	});
 	var panel=new Ext.panel.Panel({

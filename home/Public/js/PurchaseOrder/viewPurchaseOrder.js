@@ -34,7 +34,7 @@ function viewPurchaseOrderPanel(){
 				{header: "供应商名称", dataIndex: 'supplier_name'},
 				{header: "供应商电话", dataIndex: 'supplier_phone'},
 				{header: "供应商地址", dataIndex: 'supplier_addr'},
-				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{

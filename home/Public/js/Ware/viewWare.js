@@ -31,7 +31,7 @@ function viewWarePanel () {
 				{header: "额定售价", dataIndex: 'market_price'},
 				{header: "生产商名称", dataIndex: 'productor'},
 				{header: "入库时间", dataIndex: 'in_time',width:150},
-				{header:"操作",xtype:'actioncolumn',icon:'__ROOT__/fa.ico',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
