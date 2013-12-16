@@ -6,12 +6,12 @@ function getMenuPanel(){
 		width:150,
 		items:[{
 			title:'进货单',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_newPurchaseOrder',
 			items:[{
 					xtype:'button',
 					text:'新建',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'newOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('newPurchaseOrder');
@@ -26,7 +26,7 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'viewOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('viewPurchaseOrder');
@@ -41,12 +41,12 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'明细',
 					cls:'menuButton',
-					icon:''
+					iconCls:'detailOrderButtonImg'
 			},{
 					xtype:'button',
 					text:'数据分析',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'analyseOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('analysePurchaseOrder');
@@ -61,12 +61,12 @@ function getMenuPanel(){
 			cls:'mainMenu'
 		},{
 			title:'销售单',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_newSaleOrder',
 			items:[{
 				xtype:'button',
 				text:'新建',
 				cls:'menuButton',
-				icon:'',
+				iconCls:'newOrderButtonImg',
 				listeners:{
 					click:function(){
 						var form=Ext.getCmp('newSaleOrder');
@@ -81,7 +81,7 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'viewOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('viewSaleOrder');
@@ -96,12 +96,12 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'明细',
 					cls:'menuButton',
-					icon:''
+					iconCls:'detailOrderButtonImg'
 			},{
 					xtype:'button',
 					text:'数据分析',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'analyseOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('analyseSaleOrder');
@@ -116,12 +116,12 @@ function getMenuPanel(){
 			cls:'mainMenu'
 		},{
 			title:'销售退货单',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_newCancelOrder',
 			items:[{
 					xtype:'button',
 					text:'新建',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'newOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('newCancelOrder');
@@ -136,7 +136,7 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'viewOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('viewCancelOrder');
@@ -151,32 +151,32 @@ function getMenuPanel(){
 			cls:'mainMenu'
 		},{
 			title:'综合处理中心',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_dataAnalyse',
 			items:[{
 					xtype:'button',
 					text:'综合分析',
 					cls:'menuButton',
-					icon:''
+					iconCls:'allAnalyseButtonImg'
 			},{
 					xtype:'button',
 					text:'利润分析',
 					cls:'menuButton',
-					icon:''
+					iconCls:'incomeButtonImg'
 			},{
 					xtype:'button',
 					text:'类型分布',
 					cls:'menuButton',
-					icon:''
+					iconCls:'saleGridButtonImg'
 			}],
 			cls:'mainMenu'
 		},{
 			title:'商品档案',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_wareInfo',
 			items:[{
 					xtype:'button',
 					text:'新建',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'newOrderButtonImg',
 					listeners:{
 						click:function(){
 							if(vender_id==father_vender){
@@ -194,7 +194,7 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'浏览',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'viewOrderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('viewWare');
@@ -209,12 +209,12 @@ function getMenuPanel(){
 			cls:'mainMenu'
 		},{
 			title:'分店管理',
-			iconCls:'mainMenuIcon',
+			iconCls:'mainMenuIcon_venderInfo',
 			items:[{
 					xtype:'button',
 					text:'创建分店账号',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'newVenderButtonImg',
 					listeners:{
 						click:function(){
 							if(vender_id==father_vender){
@@ -232,7 +232,7 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'浏览分店',
 					cls:'menuButton',
-					icon:'',
+					iconCls:'viewVenderButtonImg',
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('viewVender');

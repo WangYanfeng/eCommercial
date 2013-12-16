@@ -22,7 +22,9 @@
 }
 .menuButton{
 	width: 100%;
+	padding-top: 5px;
 	text-align: left;
+	padding-left: 20px;
 	height:30px;
 }
 .errorTip{
@@ -38,3 +40,117 @@
 	color:#b94a48;
 	position:fixed;
 }
+
+
+.mainMenuIcon_newPurchaseOrder{
+	background-image: url(/home/Public/img/purchaseOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_newSaleOrder{
+	background-image: url(/home/Public/img/saleOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_newCancelOrder{
+	background-image: url(/home/Public/img/cancelOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_dataAnalyse{
+	background-image: url(/home/Public/img/dataAnalyse.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_wareInfo{
+	background-image: url(/home/Public/img/wareInfo.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_venderInfo{
+	background-image: url(/home/Public/img/venderInfo.png);
+	width: 35px;height: 35px;
+}
+.buttonIcon{
+	width: 27px;
+	height: 27px;
+}
+.newOrderButtonImg{
+	background: url(/home/Public/img/newOrder.png)  left top no-repeat;!important;
+}
+.viewOrderButtonImg{
+	background: url(/home/Public/img/viewOrder.png)  left top no-repeat;!important;
+}
+.analyseOrderButtonImg{
+	background: url(/home/Public/img/analyseOrder.png)  left top no-repeat;!important;
+}
+.newVenderButtonImg{
+	background: url(/home/Public/img/newVender.png)  left top no-repeat;!important;
+}
+.viewVenderButtonImg{
+	background: url(/home/Public/img/viewVender.png)  left top no-repeat;!important;
+}
+.detailOrderButtonImg{
+	background: url(/home/Public/img/detailOrder.png)  left top no-repeat;!important;
+}
+.allAnalyseButtonImg{
+	background: url(/home/Public/img/allAnalyse.png)  left top no-repeat;!important;
+}
+.incomeButtonImg{
+	background: url(/home/Public/img/income.png)  left top no-repeat;!important;
+}
+.saleGridButtonImg{
+	background: url(/home/Public/img/saleGrid.png)  left top no-repeat;!important;
+}
+
+
+/*.mainMenuIcon_newPurchaseOrder{
+	background-image: url(/ecommercial/home/Public/img/purchaseOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_newSaleOrder{
+	background-image: url(/ecommercial/home/Public/img/saleOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_newCancelOrder{
+	background-image: url(/ecommercial/home/Public/img/cancelOrder.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_dataAnalyse{
+	background-image: url(/ecommercial/home/Public/img/dataAnalyse.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_wareInfo{
+	background-image: url(/ecommercial/home/Public/img/wareInfo.png);
+	width: 35px;height: 35px;
+}
+.mainMenuIcon_venderInfo{
+	background-image: url(/ecommercial/home/Public/img/venderInfo.png);
+	width: 35px;height: 35px;
+}
+.buttonIcon{
+	width: 27px;
+	height: 27px;
+}
+.newOrderButtonImg{
+	background: url(/ecommercial/home/Public/img/newOrder.png)  left top no-repeat;!important;
+}
+.viewOrderButtonImg{
+	background: url(/ecommercial/home/Public/img/viewOrder.png)  left top no-repeat;!important;
+}
+.analyseOrderButtonImg{
+	background: url(/ecommercial/home/Public/img/analyseOrder.png)  left top no-repeat;!important;
+}
+.newVenderButtonImg{
+	background: url(/ecommercial/home/Public/img/newVender.png)  left top no-repeat;!important;
+}
+.viewVenderButtonImg{
+	background: url(/ecommercial/home/Public/img/viewVender.png)  left top no-repeat;!important;
+}
+.detailOrderButtonImg{
+	background: url(/ecommercial/home/Public/img/detailOrder.png)  left top no-repeat;!important;
+}
+.allAnalyseButtonImg{
+	background: url(/ecommercial/home/Public/img/allAnalyse.png)  left top no-repeat;!important;
+}
+.incomeButtonImg{
+	background: url(/ecommercial/home/Public/img/income.png)  left top no-repeat;!important;
+}
+.saleGridButtonImg{
+	background: url(/ecommercial/home/Public/img/saleGrid.png)  left top no-repeat;!important;
+}*/

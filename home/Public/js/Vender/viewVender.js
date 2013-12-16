@@ -28,7 +28,7 @@ function viewVenderPanel() {
 				{header: "店铺地址", dataIndex: 'vender_addr'},
 				{header: "店铺联系电话", dataIndex: 'vender_phone'},
 				{header: "创建时间", dataIndex: 'in_time',width:150},
-				{header:"操作",xtype:'actioncolumn',icon:'/ecommercial/home/Public/img/delete.png',
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',
 				 handler:function(){
 					if(vender_id==father_vender){
 						alert("功能扩展");
