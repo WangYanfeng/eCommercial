@@ -54,7 +54,8 @@ function getToolbar_newPurchaseOrder(){
 function getForm_newPurchaseOrder(n){
 	var formsPanel=Ext.create('Ext.panel.Panel',{
 		layout:'column',
-		html:'<div id="newPurchaseOrdertips" style="height:20px;color:red;"></div>',
+		html:'<div class="errorTip" id="newPurchaseOrdertips"></div>',
+		bodyStyle:'padding-top:24px;',
 		listeners:{
 			afterRender:function(){
 				for(var i=0;i<n;i++){

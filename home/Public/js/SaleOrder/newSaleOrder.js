@@ -53,7 +53,8 @@ function getToolbar_newSaleOrder(){
 function getForm_newSaleOrder(n){
 	var formsPanel=Ext.create('Ext.panel.Panel',{
 		layout:'column',
-		html:'<div id="newSaleOrdertips" style="height:20px;color:red;"></div>',
+		html:'<div id="newSaleOrdertips" class="errorTip"></div>',
+		bodyStyle:'padding-top:24px;',
 		listeners:{
 			afterRender:function(){
 				for(var i=0;i<n;i++){

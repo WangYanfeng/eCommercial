@@ -54,7 +54,8 @@ function getToolbar_newVender(){
 function getForm_newVender(n){
 	var formsPanel=Ext.create('Ext.panel.Panel',{
 		layout:'column',
-		html:'<div id="newVendertips" style="height:20px;color:red;"></div>',
+		html:'<div id="newVendertips" class="errorTip"></div>',
+		bodyStyle:'padding-top:24px;',
 		listeners:{
 			afterRender:function(){
 				for(var i=0;i<n;i++){
