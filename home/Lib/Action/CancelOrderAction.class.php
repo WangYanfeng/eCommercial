@@ -10,7 +10,7 @@ class CancelOrderAction extends Action
 		$father_vender=I('father_vender');
 		$data['ware_id']=I('ware_id');
 		$data['ware_num']=I('ware_num');
-		$data['order_total_price']=I('order_total_price');
+		$data['order_payment']=I('order_total_price');
 		$data['order_time']=date('y-m-d H:i:s',time());
 		$data['customer_name']=I('customer_name');		
 		$data['others']=I('others');

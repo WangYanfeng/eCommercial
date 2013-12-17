@@ -38,7 +38,7 @@ Ext.define('CancelOrders',{
 		{name:'vender_id',type:'int'},
 		{name:'ware_id',type:'int'},
 		{name:'ware_num',type:'int'},
-		{name:'order_total_price',type:'int'},
+		{name:'order_payment',type:'int'},
 		{name:'order_time',type:'string'},
 		{name:'customer_name',type:'string'},
 		{name:'others',type:'string'}

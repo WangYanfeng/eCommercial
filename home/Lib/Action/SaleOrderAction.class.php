@@ -102,18 +102,18 @@ class SaleOrderAction extends Action
 					break;
 			}
 		}
-		$data[0]=array("month"=>"一月","data"=>"$total[1]");
-		$data[1]=array("month"=>"二月","data"=>"$total[2]");
-		$data[2]=array("month"=>"三月","data"=>"$total[3]");
-		$data[3]=array("month"=>"四月","data"=>"$total[4]");
-		$data[4]=array("month"=>"五月","data"=>"$total[5]");
-		$data[5]=array("month"=>"六月","data"=>"$total[6]");
-		$data[6]=array("month"=>"七月","data"=>"$total[7]");
-		$data[7]=array("month"=>"八月","data"=>"$total[8]");
-		$data[8]=array("month"=>"九月","data"=>"$total[9]");
-		$data[9]=array("month"=>"十月","data"=>"$total[10]");
-		$data[10]=array("month"=>"十一月","data"=>"$total[11]");
-		$data[11]=array("month"=>"十二月","data"=>"$total[12]");
+		$data[0]=array("month"=>"一月","data"=>$total[1]);
+		$data[1]=array("month"=>"二月","data"=>$total[2]);
+		$data[2]=array("month"=>"三月","data"=>$total[3]);
+		$data[3]=array("month"=>"四月","data"=>$total[4]);
+		$data[4]=array("month"=>"五月","data"=>$total[5]);
+		$data[5]=array("month"=>"六月","data"=>$total[6]);
+		$data[6]=array("month"=>"七月","data"=>$total[7]);
+		$data[7]=array("month"=>"八月","data"=>$total[8]);
+		$data[8]=array("month"=>"九月","data"=>$total[9]);
+		$data[9]=array("month"=>"十月","data"=>$total[10]);
+		$data[10]=array("month"=>"十一月","data"=>$total[11]);
+		$data[11]=array("month"=>"十二月","data"=>$total[12]);
 		return $data;
 	}
 }

@@ -27,7 +27,7 @@ function viewCancelOrderPanel () {
 				{header: "店铺id", dataIndex: 'vender_id',sortable:true},
 				{header: "商品个数", dataIndex: 'ware_num'},
 				{header: "商品编号", dataIndex: 'ware_id'},
-				{header: "订单总价", dataIndex: 'order_total_price'},
+				{header: "订单总价", dataIndex: 'order_payment'},
 				{header: "订单时间", dataIndex: 'order_time',width:150},
 				{header: "顾客名称", dataIndex: 'customer_name'},
 				{header:"意见反馈",dataIndex:'others'},

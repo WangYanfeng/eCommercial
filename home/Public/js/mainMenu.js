@@ -171,7 +171,17 @@ function getMenuPanel(){
 					xtype:'button',
 					text:'利润分析',
 					cls:'menuButton',
-					iconCls:'incomeButtonImg'
+					iconCls:'incomeButtonImg',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('totalIncomeAnalyse');
+							if(form==null){
+								form=totalIncomeAnalysePanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			},{
 					xtype:'button',
 					text:'类型分布',
