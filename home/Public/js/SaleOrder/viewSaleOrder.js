@@ -32,8 +32,8 @@ function viewSaleOrderPanel () {
 				{header: "支付金额", dataIndex: 'order_payment'},
 				{header: "订单时间", dataIndex: 'order_time',width:150},
 				{header: "顾客名称", dataIndex: 'customer_name'},
-				{header: "顾客电话", dataIndex: 'customer_phone'},
-				{header: "顾客联系地址", dataIndex: 'customer_addr'},
+				{header: "顾客电话", dataIndex: 'customer_phone',width:150},
+				{header: "顾客联系地址", dataIndex: 'customer_addr',width:150},
 				{header:"销售员",dataIndex:'saleperson'},
 				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]

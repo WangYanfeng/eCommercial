@@ -1,6 +1,6 @@
 function newSaleOrderPanel(){
 	var panel=Ext.create('Ext.panel.Panel',{
-		title:'新建销售单',
+		title:'新建出库单',
 		id:'newSaleOrder',
 		closable:true,
 		tbar:getToolbar_newSaleOrder(),
@@ -59,7 +59,7 @@ function getForm_newSaleOrder(n){
 			afterRender:function(){
 				for(var i=0;i<n;i++){
 					var form=new Ext.form.Panel({
-						title:'销售单'+(i+1),
+						title:'出库单'+(i+1),
 						columnWidth:.5,
 						minWidth:350,
 						bodyStyle:'padding-top:10px;padding-left:40px;',

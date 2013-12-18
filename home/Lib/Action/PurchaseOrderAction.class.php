@@ -21,7 +21,7 @@ class PurchaseOrderAction extends Action
 		$data['seller_discount']=I('seller_discount');
 		$data['order_payment']=I('order_payment');
 		$data['order_time']=date('y-m-d H:i:s',time());
-		$data['supplier_name']=I('supplier_name');		
+		$data['supplier_name']=I('supplier_name');	
 		$data['supplier_phone']=I('supplier_phone');
 		$data['supplier_addr']=I('supplier_addr');
 		$DBpurchaseorders=D('purchaseorders_vender'.$father_vender);

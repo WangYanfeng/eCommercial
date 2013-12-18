@@ -2,8 +2,7 @@
 // 本类由系统自动生成，仅供测试用途
 class IndexAction extends Action {
 	function index(){
-    	if($this->isPost()){  
-        //$this->redirect('?m=Index&a=mainpage');die();      
+    	if($this->isPost()){
       	$vender_name = $_POST['vender_name'];
         $vender_pwd = $_POST['vender_pwd'];
         $DBvenders=D('venders');
@@ -15,7 +14,7 @@ class IndexAction extends Action {
                         'vender_name' => $res['vender_name'],
                         'father_vender'=>$father_vender
             ));
-            $this->redirect('?m=Index&a=mainpage');
+            $this->redirect('?m=Main&a=index');
         }else{
             $this->error('密码错误');
         }
@@ -23,9 +22,7 @@ class IndexAction extends Action {
     		$this->display();
     	}
   }
-  function mainpage(){
-      $this->display();
-  }
+ 
   function regist(){      
       $data['vender_name']=I('vender_name');
       $data['vender_pwd']=I('vender_pwd');

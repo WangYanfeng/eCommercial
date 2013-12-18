@@ -80,7 +80,7 @@
 	background: url(/home/Public/img/analyseOrder.png)  left top no-repeat;!important;
 }
 .newVenderButtonImg{
-	background: url(/home/Public/img/newVender.png)  left top no-repeat;!important;
+	background: url(/home/Public/img/newaVender.png)  left top no-repeat;!important;
 }
 .viewVenderButtonImg{
 	background: url(/home/Public/img/viewVender.png)  left top no-repeat;!important;
@@ -94,8 +94,14 @@
 .incomeButtonImg{
 	background: url(/home/Public/img/income.png)  left top no-repeat;!important;
 }
+.venderListButtonImg{
+	background: url(/home/Public/img/venderList.png)  left top no-repeat;!important;
+}
 .saleGridButtonImg{
 	background: url(/home/Public/img/saleGrid.png)  left top no-repeat;!important;
+.allWareButtonImg{
+	background: url(/home/Public/img/viewWare.png)  left top no-repeat;!important;
+}
 }*/
 
 
@@ -137,7 +143,7 @@
 	background: url(/ecommercial/home/Public/img/analyseOrder.png)  left top no-repeat;!important;
 }
 .newVenderButtonImg{
-	background: url(/ecommercial/home/Public/img/newVender.png)  left top no-repeat;!important;
+	background: url(/ecommercial/home/Public/img/newaVender.png)  left top no-repeat;!important;
 }
 .viewVenderButtonImg{
 	background: url(/ecommercial/home/Public/img/viewVender.png)  left top no-repeat;!important;
@@ -151,6 +157,12 @@
 .incomeButtonImg{
 	background: url(/ecommercial/home/Public/img/income.png)  left top no-repeat;!important;
 }
+.allWareButtonImg{
+	background: url(/ecommercial/home/Public/img/viewWare.png)  left top no-repeat;!important;
+}
 .saleGridButtonImg{
 	background: url(/ecommercial/home/Public/img/saleGrid.png)  left top no-repeat;!important;
+}
+.venderListButtonImg{
+	background: url(/ecommercial/home/Public/img/venderList.png)  left top no-repeat;!important;
 }

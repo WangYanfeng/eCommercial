@@ -6,7 +6,7 @@ function totalOrderAnalysePanel(){
 			type:'ajax',
 			url:'?m=TotalAnalyse&a=getTotalAnalyseData&father_vender='+father_vender
 		},
-		fields:['month','销售','入库','退货']//'saleOrder','cancelOrder'
+		fields:['month','销售','入库','退货']
 	});
 	var chart=Ext.create('Ext.chart.Chart',{
 		animate:true,
@@ -122,6 +122,7 @@ function getToolbar_totalOrderAnalyse(store){
 			handler:function(){
 				var form = this.up('form').getForm();
 				if(form.isValid()){
+					//Ext.
 					form.submit({
 						clientValidation:true,
 						url:'?m=TotalAnalyse&a=getTotalAnalyseData',

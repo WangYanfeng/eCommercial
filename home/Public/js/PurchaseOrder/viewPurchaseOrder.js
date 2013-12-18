@@ -31,9 +31,9 @@ function viewPurchaseOrderPanel(){
 				{header: "折扣", dataIndex: 'seller_discount'},
 				{header: "支付金额", dataIndex: 'order_payment'},
 				{header: "订单时间", dataIndex: 'order_time',width:150},
-				{header: "供应商名称", dataIndex: 'supplier_name'},
-				{header: "供应商电话", dataIndex: 'supplier_phone'},
-				{header: "供应商地址", dataIndex: 'supplier_addr'},
+				{header: "供应商名称", dataIndex: 'supplier_name',width:150},
+				{header: "供应商电话", dataIndex: 'supplier_phone',width:150},
+				{header: "供应商地址", dataIndex: 'supplier_addr',width:200},
 				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]
 	});

@@ -1,6 +1,6 @@
 function newPurchaseOrderPanel(){
 	var panel=new Ext.panel.Panel({
-		title:'新建进货单',
+		title:'新建入库单',
 		id:'newPurchaseOrder',
 		closable:true,
 		tbar:getToolbar_newPurchaseOrder(),
@@ -60,7 +60,7 @@ function getForm_newPurchaseOrder(n){
 			afterRender:function(){
 				for(var i=0;i<n;i++){
 					var form=new Ext.form.Panel({
-						title:'进货单'+(i+1),
+						title:'入库单'+(i+1),
 						columnWidth:.5,
 						minWidth:350,
 						bodyStyle:'padding-top:10px;padding-left:40px;',

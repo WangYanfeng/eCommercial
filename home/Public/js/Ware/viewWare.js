@@ -24,12 +24,12 @@ function viewWarePanel () {
 		columns:[
 				Ext.create('Ext.grid.RowNumberer',{text:'行号',width:50}),
 				{header: "商品编号", dataIndex: 'ware_id',sortable:true},
-				{header: "商品名称", dataIndex: 'ware_name'},
-				{header: "商品分类", dataIndex: 'category'},
-				{header: "品牌名称", dataIndex: 'brand_name'},
+				{header: "商品名称", dataIndex: 'ware_name',width:150},
+				{header: "品牌名称", dataIndex: 'brand_name',width:150},
 				{header: "进价", dataIndex: 'cost_price'},
 				{header: "额定售价", dataIndex: 'market_price'},
-				{header: "生产商名称", dataIndex: 'productor'},
+				{header: "商品分类", dataIndex: 'category',width:150},
+				{header: "生产商名称", dataIndex: 'productor',width:150},
 				{header: "入库时间", dataIndex: 'in_time',width:150},
 				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
 		]

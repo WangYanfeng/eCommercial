@@ -56,6 +56,18 @@ Ext.define('Wares',{
 		{name:'productor',type:'string'}
 	]
 });
+Ext.define('WaresStock',{
+	extend:'Ext.data.Model',
+	fields:[
+		{name:'ware_id',type:'int'},
+		{name:'ware_name',type:'string'},
+		{name:'brand_name',type:'string'},
+		{name:'vender_name',type:'string'},
+		{name:'vender_addr',type:'string'},
+		{name:'vender_phone',type:'int'},
+		{name:'ware_num',type:'int'}
+	]
+});
 Ext.define('Venders',{
 	extend:'Ext.data.Model',
 	fields:[

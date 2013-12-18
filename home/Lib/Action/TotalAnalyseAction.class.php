@@ -12,11 +12,11 @@ class TotalAnalyseAction extends Action
 			$beginDate=I('beginDate');
 			$endDate=I('endDate');
 			$father_vender=I('father_vender');
-			$purchaseOrderData=$this->getOrderData('purchaseorders_vender'.$father_vender,$beginDate,$endDate);
-			$saleOrderData=$this->getOrderData('saleorders_vender'.$father_vender,$beginDate,$endDate);
-			$cancelOrderData=$this->getOrderData('cancelorders_vender'.$father_vender,$beginDate,$endDate);
-			$data=$this->sortDataByMonth($purchaseOrderData,$saleOrderData,$cancelOrderData);
-			echo "{success:true,datas:".json_encode($data)."}";
+			$data[0]=$this->getOrderData('purchaseorders_vender'.$father_vender,$beginDate,$endDate);
+			$data[1]=$this->getOrderData('saleorders_vender'.$father_vender,$beginDate,$endDate);
+			$data[2]=$this->getOrderData('cancelorders_vender'.$father_vender,$beginDate,$endDate);
+			$result=$this->sortDataByMonth($data);
+			echo "{success:true,datas:".json_encode($result)."}";
 		}
 		else{
 			$beginDate="2013-01-01 00:00:00";
@@ -123,6 +123,11 @@ class TotalAnalyseAction extends Action
 			$beginDate=I('beginDate');
 			$endDate=I('endDate');
 			$father_vender=I('father_vender');
+			$data[0]=$this->getOrderData('purchaseorders_vender'.$father_vender,$beginDate,$endDate);
+			$data[1]=$this->getOrderData('saleorders_vender'.$father_vender,$beginDate,$endDate);
+			$data[2]=$this->getOrderData('cancelorders_vender'.$father_vender,$beginDate,$endDate);
+			$result=$this->sortIncomeByMonth($data);
+			echo "{success:true,datas:".json_encode($result)."}";
 		}
 		else{
 			$beginDate="2013-01-01 00:00:00";
@@ -157,8 +162,11 @@ class TotalAnalyseAction extends Action
 	}
 	function getIncomeTipData()
 	{
-		$beginDate="2013-01-01 00:00:00";
-		$endDate="2013-12-31 23:59:59";
+		$beginDate=I('beginDate');
+		$endDate=I('endDate');
+		if ($beginDate==null) {
+			$beginDate="2013-01-01 00:00:00";
+		}
 		$father_vender=I('father_vender');
 		$month=I('month');
 		$data[0]=$this->getOrderData('purchaseorders_vender'.$father_vender,$beginDate,$endDate);

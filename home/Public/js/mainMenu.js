@@ -9,7 +9,7 @@ function getMenuPanel(){
 			iconCls:'mainMenuIcon_newPurchaseOrder',
 			items:[{
 					xtype:'button',
-					text:'新建',
+					text:'新建入库单',
 					cls:'menuButton',
 					iconCls:'newOrderButtonImg',
 					listeners:{
@@ -24,7 +24,7 @@ function getMenuPanel(){
 					}
 			},{
 					xtype:'button',
-					text:'浏览',
+					text:'浏览入库单',
 					cls:'menuButton',
 					iconCls:'viewOrderButtonImg',
 					listeners:{
@@ -39,7 +39,7 @@ function getMenuPanel(){
 					}
 			},{
 					xtype:'button',
-					text:'明细',
+					text:'入库明细',
 					cls:'menuButton',
 					iconCls:'detailOrderButtonImg'
 			},{
@@ -64,7 +64,7 @@ function getMenuPanel(){
 			iconCls:'mainMenuIcon_newSaleOrder',
 			items:[{
 				xtype:'button',
-				text:'新建',
+				text:'新建出库单',
 				cls:'menuButton',
 				iconCls:'newOrderButtonImg',
 				listeners:{
@@ -79,7 +79,7 @@ function getMenuPanel(){
 				}
 			},{
 					xtype:'button',
-					text:'浏览',
+					text:'浏览出库单',
 					cls:'menuButton',
 					iconCls:'viewOrderButtonImg',
 					listeners:{
@@ -94,7 +94,7 @@ function getMenuPanel(){
 					}
 			},{
 					xtype:'button',
-					text:'明细',
+					text:'出库明细',
 					cls:'menuButton',
 					iconCls:'detailOrderButtonImg'
 			},{
@@ -115,11 +115,11 @@ function getMenuPanel(){
 			}],
 			cls:'mainMenu'
 		},{
-			title:'销售退货单',
+			title:'销售退货',
 			iconCls:'mainMenuIcon_newCancelOrder',
 			items:[{
 					xtype:'button',
-					text:'新建',
+					text:'新建退货单',
 					cls:'menuButton',
 					iconCls:'newOrderButtonImg',
 					listeners:{
@@ -134,7 +134,7 @@ function getMenuPanel(){
 					}
 			},{
 					xtype:'button',
-					text:'浏览',
+					text:'浏览退货单',
 					cls:'menuButton',
 					iconCls:'viewOrderButtonImg',
 					listeners:{
@@ -190,11 +190,11 @@ function getMenuPanel(){
 			}],
 			cls:'mainMenu'
 		},{
-			title:'商品档案',
+			title:'商品仓库',
 			iconCls:'mainMenuIcon_wareInfo',
 			items:[{
 					xtype:'button',
-					text:'新建',
+					text:'新建商品清单',
 					cls:'menuButton',
 					iconCls:'newOrderButtonImg',
 					listeners:{
@@ -212,7 +212,7 @@ function getMenuPanel(){
 					}
 			},{
 					xtype:'button',
-					text:'浏览',
+					text:'浏览商品清单',
 					cls:'menuButton',
 					iconCls:'viewOrderButtonImg',
 					listeners:{
@@ -225,6 +225,21 @@ function getMenuPanel(){
 							centerTabPanel.setActiveTab(form);
 						}
 					}
+			},{
+					xtype:'button',
+					text:'商品库存信息',
+					cls:'menuButton',
+					iconCls:'allWareButtonImg',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('allWare');
+							if (form==null) {
+								form=allWarePanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
 			}],
 			cls:'mainMenu'
 		},{
@@ -232,7 +247,7 @@ function getMenuPanel(){
 			iconCls:'mainMenuIcon_venderInfo',
 			items:[{
 					xtype:'button',
-					text:'创建分店账号',
+					text:'创建分店',
 					cls:'menuButton',
 					iconCls:'newVenderButtonImg',
 					listeners:{
@@ -258,6 +273,21 @@ function getMenuPanel(){
 							var form=Ext.getCmp('viewVender');
 							if (form==null) {
 								form=viewVenderPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+			},{
+					xtype:'button',
+					text:'分店销售排行',
+					cls:'menuButton',
+					iconCls:'venderListButtonImg',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('venderList');
+							if (form==null) {
+								form=venderListPanel();
 								centerTabPanel.add(form);
 							}
 							centerTabPanel.setActiveTab(form);

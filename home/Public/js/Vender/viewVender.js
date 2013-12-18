@@ -24,9 +24,9 @@ function viewVenderPanel() {
 		columns:[
 				Ext.create('Ext.grid.RowNumberer',{text:'行号',width:50}),
 				{header: "店铺编号", dataIndex: 'vender_id',sortable:true},
-				{header: "店铺名称", dataIndex: 'vender_name'},
-				{header: "店铺地址", dataIndex: 'vender_addr'},
-				{header: "店铺联系电话", dataIndex: 'vender_phone'},
+				{header: "店铺名称", dataIndex: 'vender_name',width:150},
+				{header: "店铺地址", dataIndex: 'vender_addr',width:200},
+				{header: "店铺联系电话", dataIndex: 'vender_phone',width:150},
 				{header: "创建时间", dataIndex: 'in_time',width:150},
 				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',
 				 handler:function(){

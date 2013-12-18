@@ -109,13 +109,15 @@ function totalIncomeAnalysePanel(){
 				},
 				renderer:function(storeItem,item){
 					this.setTitle(storeItem.get('month')+'份收益:'+storeItem.get('data')+'元');
-					var month=storeItem.index;
+					var month=item.value[0];
 					Ext.Ajax.request({
-		                url:'?m=TotalAnalyse&a=getIncomeTipData&father_vender=',
+		                url:'?m=TotalAnalyse&a=getIncomeTipData',
 		                method: 'post',
 		                params:{
 		                	month:month,
-		                	father_vender:father_vender
+		                	father_vender:father_vender,
+		                	beginDate:Ext.getCmp('totalIncomeAnalyse_beginDate').getValue(),
+		                	endDate:Ext.getCmp('totalIncomeAnalyse_endDate').getValue()
 		                },
 		                success: function (response, options) {
 		                	var data=response.responseText;
@@ -144,10 +146,10 @@ function totalIncomeAnalysePanel(){
 		}]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
-		title:'综合数据分析',
+		title:'月收益分析',
 		id:'totalIncomeAnalyse',		
 		closable:true,		
-		//tbar:getToolbar_totalIncomeAnalyse(store),
+		tbar:getToolbar_totalIncomeAnalyse(chartStore),
 		layout:'fit',
 		bodyStyle:'background-color:#ffffff;overflow:auto',
 		listeners:{
@@ -203,7 +205,7 @@ function getToolbar_totalIncomeAnalyse(store){
 				if(form.isValid()){
 					form.submit({
 						clientValidation:true,
-						url:'?m=TotalAnalyse&a=getTotalAnalyseData',
+						url:'?m=TotalAnalyse&a=getIncomeAnalyseData',
 						method:'POST',
 						success:function(form, action) {
 							store.loadData(action.result.datas);
