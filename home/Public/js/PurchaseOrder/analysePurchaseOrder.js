@@ -93,7 +93,8 @@ function getToolbar_analysePurchaseOrder(store){
 			fieldLabel:'起始时间',
 			msgTarget:'side',
 			dateRange:{begin:'analysePurchaseorder_beginDate',end:'analysePurchaseorder_endDate'},
-			vtype:'dateRange'
+			vtype:'dateRange',
+			value:'2013-01-01'
 		},{
 			id:'analysePurchaseorder_endDate',
 			name:'endDate',

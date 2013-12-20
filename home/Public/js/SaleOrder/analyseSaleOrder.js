@@ -93,7 +93,8 @@ function getToolbar_analyseSaleOrder(store){
 			fieldLabel:'起始时间',
 			msgTarget:'side',
 			dateRange:{begin:'analyseSaleorder_beginDate',end:'analyseSaleorder_endDate'},
-			vtype:'dateRange'
+			vtype:'dateRange',
+			value:'2013-01-01'
 		},{
 			id:'analyseSaleorder_endDate',
 			name:'endDate',

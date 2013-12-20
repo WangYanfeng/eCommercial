@@ -31,7 +31,7 @@ function viewVenderPanel() {
 				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',
 				 handler:function(){
 					if(vender_id==father_vender){
-						alert("功能扩展");
+						alert("该功能正在扩展");
 					}
 					else{Ext.Msg.alert("易通小提示","对不起，您没有创建分店的权限。");}
 				 }
@@ -42,7 +42,6 @@ function viewVenderPanel() {
 		title:'浏览分店',
 		id:'viewVender',
 		closable:true,
-		tbar:getToolbar_viewVender(),
 		layout:'fit',
 		bodyStyle:'background-color:#ffffff;overflow-y:auto',
 		listeners:{
@@ -52,17 +51,4 @@ function viewVenderPanel() {
 		}
 	});
 	return panel;
-}
-function getToolbar_viewVender(){
-	var toolbar=new Ext.toolbar.Toolbar({
-		padding:'5 5 5 5'
-	});
-	toolbar.add(
-				{text:'导出为excel',
-					handler:function(btn){
-						alert();
-					}
-				},'-'
-		);
-	return toolbar;
 }

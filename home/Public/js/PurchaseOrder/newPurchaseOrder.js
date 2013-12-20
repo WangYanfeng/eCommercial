@@ -20,7 +20,8 @@ function getToolbar_newPurchaseOrder(){
 	toolbar.add(
 				{text:'从excel文件导入',
 					handler:function(btn){
-						alert();
+						var importWin=importExcelWin('purchaseorders_vender'+father_vender);
+						importWin.show();
 					}
 				},'-'
 		);

@@ -31,7 +31,12 @@ function viewCancelOrderPanel () {
 				{header: "订单时间", dataIndex: 'order_time',width:150},
 				{header: "顾客名称", dataIndex: 'customer_name',width:150},
 				{header:"意见反馈",dataIndex:'others',width:250},
-				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){
+					if(vender_id==father_vender){
+						alert("该功能正在扩展");
+					}
+					else{Ext.Msg.alert("易通小提示","对不起，您没有权限。");}
+				 }}
 		]
 	});
 	var panel=new Ext.panel.Panel({
@@ -56,7 +61,8 @@ function getToolbar_viewCancelOrder(){
 	toolbar.add(
 				{text:'导出为excel',
 					handler:function(btn){
-						alert();
+						var importWin=exportExcelWin('cancelorders_vender'+father_vender);
+						importWin.show();
 					}
 				},'-'
 		);

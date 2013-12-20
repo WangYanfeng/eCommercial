@@ -185,7 +185,8 @@ function getToolbar_totalIncomeAnalyse(store){
 			fieldLabel:'起始时间',
 			msgTarget:'side',
 			dateRange:{begin:'totalIncomeAnalyse_beginDate',end:'totalIncomeAnalyse_endDate'},
-			vtype:'dateRange'
+			vtype:'dateRange',
+			value:'2013-01-01'
 		},{
 			id:'totalIncomeAnalyse_endDate',
 			name:'endDate',

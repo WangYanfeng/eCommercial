@@ -19,7 +19,8 @@ function getToolbar_newSaleOrder(){
 	toolbar.add(
 				{text:'从excel文件导入',
 					handler:function(btn){
-						alert();
+						var importWin=importExcelWin('saleorders_vender'+father_vender);
+						importWin.show();
 					}
 				},'-'
 		);

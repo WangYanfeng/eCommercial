@@ -34,7 +34,12 @@ function viewPurchaseOrderPanel(){
 				{header: "供应商名称", dataIndex: 'supplier_name',width:150},
 				{header: "供应商电话", dataIndex: 'supplier_phone',width:150},
 				{header: "供应商地址", dataIndex: 'supplier_addr',width:200},
-				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){
+					if(vender_id==father_vender){
+						alert("该功能正在扩展");
+					}
+					else{Ext.Msg.alert("易通小提示","对不起，您没有权限。");}
+				}}
 		]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
@@ -59,7 +64,8 @@ function getToolbar_viewPurchaseOrder(){
 	toolbar.add(
 				{text:'导出为excel',
 					handler:function(btn){
-						alert();
+						var win=exportExcelWin('purchaseorders_vender'+father_vender);
+						win.show();
 					}
 				},'-'
 		);

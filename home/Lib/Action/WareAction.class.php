@@ -51,8 +51,14 @@ class WareAction extends Action
     			}
     		}
     	}
-    	//echo "----------->";
-    	//dump($ware_array);
+    	for ($i=0; $i < count($cancel_array); $i++) { 
+    		for ($j=0; $j < count($ware_array); $j++) { 
+    			if($cancel_array[$i]['vender_id']==$ware_array[$j]['vender_id']&&$cancel_array[$i]['ware_id']==$ware_array[$j]['ware_id']){
+    				$ware_array[$j]['ware_num']+=$cancel_array[$i]['ware_num'];
+    				break;
+    			}
+    		}
+    	}
     	$DBvenders=D('venders');
     	for($i=0; $i < count($ware_array); $i++) { 
     		$vender_id=$ware_array[$i]['vender_id'];
@@ -64,7 +70,7 @@ class WareAction extends Action
 		echo "{wares:".json_encode($ware_array)."}";
 	}
 	function sortOrderWareNum($ware_array)
-	{
+	{//同一个店中同类商品的购买或销售件数
 		$result=array();
 		$n=count($ware_array);
 		for ($i=0; $i < $n; $i++) { 

@@ -31,7 +31,12 @@ function viewWarePanel () {
 				{header: "商品分类", dataIndex: 'category',width:150},
 				{header: "生产商名称", dataIndex: 'productor',width:150},
 				{header: "入库时间", dataIndex: 'in_time',width:150},
-				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){
+					if(vender_id==father_vender){
+						alert("该功能正在扩展");
+					}
+					else{Ext.Msg.alert("易通小提示","对不起，您没有权限。");}
+				}}
 		]
 	});
 	var panel=Ext.create('Ext.panel.Panel',{
@@ -56,7 +61,8 @@ function getToolbar_viewWare(){
 	toolbar.add(
 				{text:'导出为excel',
 					handler:function(btn){
-						alert();
+						var importWin=exportExcelWin('wares_vender'+father_vender);
+						importWin.show();
 					}
 				},'-'
 		);

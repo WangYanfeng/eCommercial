@@ -35,7 +35,12 @@ function viewSaleOrderPanel () {
 				{header: "顾客电话", dataIndex: 'customer_phone',width:150},
 				{header: "顾客联系地址", dataIndex: 'customer_addr',width:150},
 				{header:"销售员",dataIndex:'saleperson'},
-				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){alert();}}
+				{header:"操作",xtype:'actioncolumn',icon:'/home/Public/img/delete.png',handler:function(){
+					if(vender_id==father_vender){
+						alert("该功能正在扩展");
+					}
+					else{Ext.Msg.alert("易通小提示","对不起，您没有权限。");}
+				}}
 		]
 	});
 	var panel=new Ext.panel.Panel({
@@ -60,7 +65,8 @@ function getToolbar_viewSaleOrder(){
 	toolbar.add(
 				{text:'导出为excel',
 					handler:function(btn){
-						alert();
+						var importWin=exportExcelWin('saleorders_vender'+father_vender);
+						importWin.show();
 					}
 				},'-'
 		);

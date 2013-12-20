@@ -17,13 +17,6 @@ function newVenderPanel(){
 function getToolbar_newVender(){
 	var toolbar=new Ext.toolbar.Toolbar({
 		padding:'5 5 5 5'});
-	toolbar.add(
-				{text:'从excel文件导入',
-					handler:function(btn){
-						alert();
-					}
-				},'-'
-		);
 	var fileMenu=new Ext.menu.Menu({
 		shadow:'frame',
 		plain:true,

@@ -285,9 +285,69 @@ function getMenuPanel(){
 					iconCls:'venderListButtonImg',
 					listeners:{
 						click:function(){
-							var form=Ext.getCmp('venderList');
+							var form=Ext.getCmp('venderRank');
 							if (form==null) {
-								form=venderListPanel();
+								form=venderRankPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+			}],
+			cls:'mainMenu'
+		},{
+			title:'关于我们',
+			items:[{
+					xtype:'button',
+					text:'系统简介',
+					cls:'menuButton',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('systemIntroduction');
+							if (form==null) {
+								form=systemIntroductionPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+			},{
+					xtype:'button',
+					text:'开发团队',
+					cls:'menuButton',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('ourTeam');
+							if (form==null) {
+								form=ourTeamPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+			},{
+					xtype:'button',
+					text:'联系我们',
+					cls:'menuButton',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('contactUs');
+							if (form==null) {
+								form=contactUsPanel();
+								centerTabPanel.add(form);
+							}
+							centerTabPanel.setActiveTab(form);
+						}
+					}
+			},{
+					xtype:'button',
+					text:'捐赠我们',
+					cls:'menuButton',
+					listeners:{
+						click:function(){
+							var form=Ext.getCmp('donateUs');
+							if (form==null) {
+								form=donateUsPanel();
 								centerTabPanel.add(form);
 							}
 							centerTabPanel.setActiveTab(form);

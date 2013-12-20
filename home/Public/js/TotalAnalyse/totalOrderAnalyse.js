@@ -104,7 +104,8 @@ function getToolbar_totalOrderAnalyse(store){
 			fieldLabel:'起始时间',
 			msgTarget:'side',
 			dateRange:{begin:'totalOrderAnalyse_beginDate',end:'totalOrderAnalyse_endDate'},
-			vtype:'dateRange'
+			vtype:'dateRange',
+			value:'2013-01-01'
 		},{
 			id:'totalOrderAnalyse_endDate',
 			name:'endDate',
