@@ -35,7 +35,7 @@
 							width:160,
 							minSize:160,
 							layout:'fit',
-							bodyStyle:'background:#abcdef;padding-bottom:80px;',
+							bodyStyle:'background:#abcdef;padding-bottom:60px;',
 							html:'<div style="margin-top:20px;text-align:center">欢迎使用易通管理系统<br>copyright</div>',
 							listeners:{
 								afterRender:function(){
@@ -54,7 +54,12 @@
 							width:230,
 							listeners:{
 								afterRender:function(){
-									
+									var form=Ext.getCmp('systemIntroduction');
+									if (form==null) {
+										form=systemIntroductionPanel();
+										this.add(form);
+									}
+									this.setActiveTab(form);
 								}
 							}
 						};
@@ -83,4 +88,8 @@
 	<script src="__ROOT__/home/Public/js/TotalAnalyse/totalIncomeAnalyse.js"></script>
 	<script src="__ROOT__/home/Public/js/ToExcel/exportExcel.js"></script>
 	<script src="__ROOT__/home/Public/js/ToExcel/importExcel.js"></script>
+	<script src="__ROOT__/home/Public/js/AboutUs/systemIntroduction.js"></script>
+	<script src="__ROOT__/home/Public/js/AboutUs/ourTeam.js"></script>
+	<script src="__ROOT__/home/Public/js/AboutUs/contactUs.js"></script>
+	<script src="__ROOT__/home/Public/js/AboutUs/donateUs.js"></script>
 </html>

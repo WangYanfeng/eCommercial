@@ -37,12 +37,14 @@ function getMenuPanel(){
 							centerTabPanel.setActiveTab(form);
 						}
 					}
-			},{
-					xtype:'button',
-					text:'入库明细',
-					cls:'menuButton',
-					iconCls:'detailOrderButtonImg'
-			},{
+			},
+			// {
+			// 		xtype:'button',
+			// 		text:'入库明细',
+			// 		cls:'menuButton',
+			// 		iconCls:'detailOrderButtonImg'
+			// },
+			{
 					xtype:'button',
 					text:'数据分析',
 					cls:'menuButton',
@@ -92,11 +94,6 @@ function getMenuPanel(){
 							centerTabPanel.setActiveTab(form);
 						}
 					}
-			},{
-					xtype:'button',
-					text:'出库明细',
-					cls:'menuButton',
-					iconCls:'detailOrderButtonImg'
 			},{
 					xtype:'button',
 					text:'数据分析',
@@ -182,12 +179,14 @@ function getMenuPanel(){
 							centerTabPanel.setActiveTab(form);
 						}
 					}
-			},{
-					xtype:'button',
-					text:'类型分布',
-					cls:'menuButton',
-					iconCls:'saleGridButtonImg'
-			}],
+			}
+			// ,{
+			// 		xtype:'button',
+			// 		text:'类型分布',
+			// 		cls:'menuButton',
+			// 		iconCls:'saleGridButtonImg'
+			// }
+			],
 			cls:'mainMenu'
 		},{
 			title:'商品仓库',
@@ -318,7 +317,7 @@ function getMenuPanel(){
 					listeners:{
 						click:function(){
 							var form=Ext.getCmp('ourTeam');
-							if (form==null) {
+							if (form==null){
 								form=ourTeamPanel();
 								centerTabPanel.add(form);
 							}
@@ -339,21 +338,23 @@ function getMenuPanel(){
 							centerTabPanel.setActiveTab(form);
 						}
 					}
-			},{
-					xtype:'button',
-					text:'捐赠我们',
-					cls:'menuButton',
-					listeners:{
-						click:function(){
-							var form=Ext.getCmp('donateUs');
-							if (form==null) {
-								form=donateUsPanel();
-								centerTabPanel.add(form);
-							}
-							centerTabPanel.setActiveTab(form);
-						}
-					}
-			}],
+			}
+			// ,{
+			// 		xtype:'button',
+			// 		text:'捐赠我们',
+			// 		cls:'menuButton',
+			// 		listeners:{
+			// 			click:function(){
+			// 				var form=Ext.getCmp('donateUs');
+			// 				if (form==null) {
+			// 					form=donateUsPanel();
+			// 					centerTabPanel.add(form);
+			// 				}
+			// 				centerTabPanel.setActiveTab(form);
+			// 			}
+			// 		}
+			// }
+			],
 			cls:'mainMenu'
 		}]
 	});
