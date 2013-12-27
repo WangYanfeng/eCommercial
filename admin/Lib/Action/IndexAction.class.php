@@ -7,8 +7,7 @@ class IndexAction extends Action {
 
     function login(){
     	$user=I('userName');
-        $pwd=I('password');
-        //$pwd= md5(I('password'));
+        $pwd= md5(I('password'));
         $DBadmin = D('admin');
         $res = $DBadmin->where("userName='".$user."' AND password='".$pwd."'")->find();
         if($res){
