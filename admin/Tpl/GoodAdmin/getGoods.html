@@ -1,0 +1,35 @@
+
+<table class="table table-hover table-bordered">          
+  <thead>
+        <tr>
+          <td width="10%">商品编号</td>
+          <td width="10%">商品名</td>
+          <td width="5%">类别</td>
+          <td width="5%">品牌</td>
+          <td width="10%">市场进价</td>
+          <td width="10%">额定售价</td>
+          <td width="10%">生产商</td>         
+          <td width="10%">入库时间</td>
+          <td width="10%">产地</td>
+          <td width="10%">保质期</td>  
+          <td width="10%">管理项</td>
+		</tr>
+	</thead>
+  <foreach name='Good_array' item='list'>
+     <tr bgcolor="#FFFFFF">
+      <td><{$list['ware_id']}></td>
+      <td><{$list['ware_name']}></td>
+      <td><{$list['category']}></td>
+      <td><{$list['brand_name']}></td>
+      <td><{$list['cost_price']}></td>
+      <td><{$list['market_price']}></td>
+      <td><{$list['productor']}></td>
+      <td><{$list['in_time']}></td>
+      <td><{$list['produaddress']}></td>
+      <td><{$list['expirationdate']}></td>
+      <td><a href="?m=GoodAdmin&a=delGood&ware_id=<{$list['ware_id']}>">删除</a></td>
+     </tr>
+  </foreach> 
+</table> 
+
+<div style="margin-bottom:20px" class="result page" id="page"><{$page}></div>

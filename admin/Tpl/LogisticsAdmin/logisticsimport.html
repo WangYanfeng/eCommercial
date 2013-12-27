@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="range-Type" range="text/html; charset=utf-8" /> 
+    <servers>物流网点管理</servers>
+    <link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css">
+    <load href="__ROOT__/admin/Public/js/jquery.min.js" />
+    <script type="text/javascript" src="__ROOT__/admin/Public/bootstrap/js/bootstrap.js"></script>
+</head>
+<body  background='__ROOT__/admin/Public/images/allbg.gif'>
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+      <td height="35" background="__ROOT__/admin/Public/images/tbg.gif" bgcolor="#E7E7E7">
+        <table width="96%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td width="24%" style="padding-left:10px;"></td>
+            <td width="76%" align="right"><a href="?m=LogisticsAdmin&a=index">返回网点列表</a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-left:10px;padding-top:20px">
+        <div style=" width:90%; margin:0 auto">
+        <form name="form_logistics" action="?m=LogisticsAdmin&a=logisticsimport" method="post">
+            <input type="hidden" name="event_submit_do_add" value=""/>
+            <label style="display:none">
+              <input name="id" value="<{$logistics[loginet_id]}>">
+            </label>
+
+            <label>网点名称</label>
+            <input style="height:35px; width:300px" type="text" name="name"  value="<{$logistics[loginet_name]}>">
+            <label>派送范围</label>
+            <label>
+               <textarea style="width:100%;" name="range" rows="20"><{$logistics[loginet_range]}></textarea>
+            </label>          
+            <label>派送员</label>
+            <input style="height:35px; width:300px" type="text" name="servers"  value="<{$logistics[loginet_servers]}>">
+            <br><button type="button" class="btn" onclick="validate()">添加网点</button></br>
+            <div id="alertmsg" style=" height:40px; margin-top:10px;"></div>
+        </form>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <script type="text/javascript">
+      $("input[name='name']").focus();
+
+      function validate() {
+          /* 为空验证 */
+          if ($.trim($("input[name='name']").val()) == "") {
+              $("input[name='name']").focus();
+              return;
+          }
+          if ($.trim($("input[name='servers']").val()) == "") {
+              $("input[name='servers']").focus();
+              return;
+          }
+          if ($.trim($("textarea[name='range']").val()) == "") {
+              $("textarea[name='range']").focus();
+              return;
+          }
+          /* 长度验证 */
+          if ($.trim($("input[name='name']").val()).length > 100) {
+              $("input[name='name']").focus();
+              warningmsg("网点名称不能超过100个字");
+              return;
+          }
+          if ($.trim($("input[name='servers']").val()).length > 100) {
+              $("input[name='servers']").focus();
+              warningmsg("派送员信息长度不能超过100个字");
+              return;
+          }
+
+          document.form_logistics.event_submit_do_add.value = "submit";
+          document.form_logistics.submit();
+      }
+
+      // 显示提示信息
+      function warningmsg(msg, type) {
+          var obj = $("#alertmsg");
+          if (obj.children().length == 0) {
+              servers = "警告";
+              if (type == "error") servers = "错误";
+              else if (type == "success") servers = "成功";
+              else if (type == "info") servers = "提示";
+
+              var info = "<div class='alert alert-" + type + " fade in'><button type='button' class='close' data-dismiss='alert'>&times;</button>";
+              info += "<strong>" + servers + "！</strong>" + msg + "</div>";
+              obj.append(info);
+
+              setTimeout(function () { obj.children("div").alert("close"); }, 2000);
+          }
+      }
+    </script>
+</body>
+</html>

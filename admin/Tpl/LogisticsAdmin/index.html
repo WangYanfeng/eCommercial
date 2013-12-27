@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>物流管理</title>
+  <link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css">
+  <load href="__ROOT__/admin/Public/js/jquery.min.js" />
+</head>
+<body  background='__ROOT__/admin/Public/images/allbg.gif'>
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+    	<td height="35" background="__ROOT__/admin/Public/images/tbg.gif" bgcolor="#E7E7E7">
+        <table width="96%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td width="24%" style="padding-left:10px;"></td>
+            <td width="76%" align="right"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <td width="10%">网点编号</td>
+              <td width="15%">网点名称</td>
+              <td width="40%">派送范围</td>
+              <td width="15%">派件员</td>
+              <td>管理项</td>
+            </tr>
+          </thead>
+          <foreach name='logistics_array' item='list'>
+             <tr bgcolor="#FFFFFF">
+              <td><{$list['loginet_id']}></td>
+              <td><{$list['loginet_name']}></td>
+              <td><{$list['loginet_range']}></td>
+              <td><{$list['loginet_servers']}></td>
+              <td><a href="?m=LogisticsAdmin&a=get_logistics&loginet_id=<{$list['loginet_id']}>">点击查看</a></td>
+              <td>
+                <a href="?m=LogisticsAdmin&a=editlogistics&loginet_id=<{$list['loginet_id']}>">修改</a> | 
+                <a href="?m=LogisticsAdmin&a=dellogistics&loginet_id=<{$list['loginet_id']}>">删除</a>
+              </td>
+             </tr>
+          </foreach> 
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div id="showlogistics"></div></td>
+    </tr>
+  </table>
+</body>
+</html>

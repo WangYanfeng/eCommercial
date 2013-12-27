@@ -7,13 +7,15 @@ class IndexAction extends Action {
 
     function login(){
     	$user=I('userName');
-        $pwd= md5(I('password'));
+        $pwd=I('password');
+        //$pwd= md5(I('password'));
         $DBadmin = D('admin');
-        $res = $DBadmin->where("admin_name='".$user."' AND admin_password='".$pwd."'")->find();
+        $res = $DBadmin->where("userName='".$user."' AND password='".$pwd."'")->find();
         if($res){
             session('admin', array('id' =>$res["id"],'admin_name' => $user));
             echo "success";
-        }else{
+        }       
+        else{
             echo "";
         }
     }

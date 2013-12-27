@@ -4,7 +4,7 @@ class IndexAction extends Action {
 	function index(){
     	if($this->isPost()){
       	$vender_name = $_POST['vender_name'];
-        $vender_pwd = $_POST['vender_pwd'];
+        $vender_pwd = md5($_POST['vender_pwd']);
         $DBvenders=D('venders');
         $res=$DBvenders->where("vender_name='" . $vender_name . "' AND vender_pwd='" . $vender_pwd. "'")->find();
         if ($res) {
@@ -25,7 +25,7 @@ class IndexAction extends Action {
  
   function regist(){      
       $data['vender_name']=I('vender_name');
-      $data['vender_pwd']=I('vender_pwd');
+      $data['vender_pwd']=md5(I('vender_pwd'));
       $data['vender_addr']=I('vender_addr');
       $data['vender_phone']=I('vender_phone');
       $data['in_time']=date('y-m-d H:i:s',time());

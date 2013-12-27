@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>导航</title>
+    <load href="__ROOT__/admin/Public/js/jquery.min.js" />
+    <load href='__ROOT__/admin/Public/css/top.css' />
+    <script type="text/javascript">
+        $(function () {
+            $("a").click(function () {
+                $("a").removeClass("selitem");
+                $("a").css("color", "white");
+                $(this).addClass("selitem");
+                $(this).css("color", "#0f9bc3");
+            });
+            $($("a")[0]).addClass("selitem");
+            $($("a")[0]).css("color", "#0f9bc3");
+        });
+    </script>
+</head>
+<body style="background-color: rgb(240,100,60); margin:0;">
+ <div style="color:White; float:left; line-height:80px; font-size:30px; margin-left:40px; text-shadow:5px 2px 6px #000;">
+        易通商务后台管理系统
+    </div>
+<div style=" position:absolute; bottom:0;">
+    <dl id="top_pan">
+        <dd>
+            <a href="?m=Admin&a=menu&item=1" target="menu">用户管理</a>
+        </dd>
+        <dd>
+            <a href="?m=Admin&a=menu&item=2" target="menu">商品管理</a>
+        </dd>
+        <dd>
+            <a href="?m=Admin&a=menu&item=3" target="menu">物流管理</a>
+        </dd>
+        <dd>
+            <a href="?m=Admin&a=menu&item=4" target="menu">系统管理</a>
+        </dd>
+        <dd>
+            <a href="?m=Index&a=logout" target="_top">退出系统</a>
+        </dd>
+    </dl>
+    </div>
+</body>
+</html>

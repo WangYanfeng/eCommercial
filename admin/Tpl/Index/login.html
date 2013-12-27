@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>   
+<html>   
+<head>   
+<meta http-equiv="Content-Type" content="text/html; charset=utf8"> 
+<title>管理员登录</title>
+<link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/css/login.css">
+<script src="__ROOT__/admin/Public/js/jquery.min.js"></script>
+<script src="__ROOT__/admin/Public/js/logo.js"></script>
+<!-- Bootstrap -->
+<link href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="__ROOT__/admin/Public/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+    <img id="top_pic" src="__ROOT__/admin/Public/images/fangshe.jpg" style="height:100px" width=100%/>
+<div id="color_span">
+    <div style="position:absolute; top:8%; margin-left:10%;">
+        <img id="logo_pic" src="__ROOT__/admin/Public/images/logo.png" />
+    </div>
+    <div class="wrap"> 
+        <section class="loginForm">   
+          <header style=" margin-top:25px;">   
+            <h1>管理员登录</h1>
+          </header>
+          <div style=" padding:5px 20px;">
+            <div id="alertmsg" style=" height:40px; margin-bottom:5px;"></div>   
+            <fieldset>   
+                <input type="text" id="account" placeholder="帐号" style="width: 295px;">   
+                <input type="password" id="pwd" placeholder="请输入密码" style="width: 295px;">
+                <div style=" margin:5px 0 15px 2px;">
+                  <label class="checkbox">
+                    <input type="checkbox" checked="checked">下次自动登录
+                    </label>
+                </div>
+                <div>
+                  <button id="login" class="btn btn-warning" type="button" style="width:80px; float:left;">登录</button>
+                </div> 
+            </fieldset>
+          </div>   
+        </section>
+    </div> 
+    <div id="text">
+        「诚信为本, 细微之处有标准; 
+        <br>通商四海, 整体运作有程序。」</br>
+    </div>
+</div>
+<footer>
+ <div style="text-align:center;">;
+ 陕西省西安市|88888888 66666666
+  <br> Copyrights © 2013易通商务管理系统|
+  <a target="_blank" href="http://www.miitbeian.gov.cn">陕ICP备08888888号-1</a>|陕公网安备8888888888</br></div>
+</footer>
+<script type="text/javascript">
+    $("#account").focus();
+        $(function () {
+            $("#login").click(function () {
+                if ($.trim($("#account").val()) == "") { $("#account").focus(); return; }
+                if ($.trim($("#pwd").val()) == "") { $("#pwd").focus(); return; }
+
+                var info = "admin.php?m=Index&a=login&";
+                info += "userName=" + $.trim($("#account").val()) + "&";
+                info += "password=" + $.trim($("#pwd").val());
+                $.ajax({
+                    type: "GET",
+                    url: info,
+                    success: function (response) {
+                        if (response == "success")
+                            window.location.href = "admin.php?m=Admin&a=admin";
+                        else
+                            warningmsg("账号密码有误", "error");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        warningmsg("登录失败", "error");
+                    }
+                });
+            });
+            // 显示提示信息
+      function warningmsg(msg, type) {
+          var obj = $("#alertmsg");
+          if (obj.children().length == 0) {
+              title = "警告";
+              if (type == "error") title = "错误";
+              else if (type == "success") title = "成功";
+              else if (type == "info") title = "提示";
+
+              var info = "<div class='alert alert-" + type + " fade in'><button type='button' class='close' data-dismiss='alert'>&times;</button>";
+              info += "<strong>" + title + "！</strong>" + msg + "</div>";
+              obj.append(info);
+
+              setTimeout(function () { obj.children("div").alert("close"); }, 2000);
+          }
+      }
+        });
+</script>
+</body>   
+</html>   
+  
+  

@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>用户管理</title>
+  <link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css">
+  <load href="__ROOT__/admin/Public/js/jquery.min.js" />
+  <script >
+    $(function(){
+      $.post('?m=UserAdmin&a=getUser',
+              function(data) {
+                $("#showUsers").html(data);
+      });
+    })
+  </script>
+</head>
+<body  background='__ROOT__/admin/Public/images/allbg.gif'>
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+    	<td height="35" background="__ROOT__/admin/Public/images/tbg.gif" bgcolor="#E7E7E7">
+        <table width="96%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td width="24%" style="padding-left:10px;"></td>
+            <td width="76%" align="right"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="showUsers"></div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

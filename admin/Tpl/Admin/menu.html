@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>菜单</title>
+    <link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css">
+    <load href='__ROOT__/admin/Public/css/menu.css' />
+    <load href="__ROOT__/admin/Public/js/jquery.min.js" />
+    <script type="text/javascript" src="__ROOT__/admin/Public/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("a").click(function () {
+                $("a").css("background", "rgb(240, 100, 60)");
+                $("a").removeClass("selmenu");
+                $(this).addClass("selmenu");
+            });
+            var obj = $("table dd li:first a");
+            window.parent.main.location.href = obj.attr("href");
+            $(obj).addClass("selmenu");
+        });
+    </script>
+    <base target="main" />
+</head>
+<body target="main">
+    <table cellpadding=0 cellspacing=0>
+        <tr>
+            <td valign="top">
+                <dl class='bitem'>
+                    <dt><b><{$menulist['key']}></b></dt>
+                    <dd>
+                        <ul class='sitemu'>
+                            <volist name="menulist['list']" id='menuitem'>
+                            <li>
+                                <a href='<{$menuitem['url']}>' target='main'><{$menuitem['name']}></a>
+                            </li>  
+    	                    </volist>
+                        </ul>
+                    </dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

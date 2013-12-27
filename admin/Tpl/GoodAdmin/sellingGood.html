@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>商品管理</title>
+  <link rel="stylesheet" type="text/css" href="__ROOT__/admin/Public/bootstrap/css/bootstrap.min.css">
+  <load href="__ROOT__/admin/Public/js/jquery.min.js" /> 
+</head>
+<body  background='__ROOT__/admin/Public/images/allbg.gif'>
+  <table width="98%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6">
+    <tr>
+    	<td height="35" background="__ROOT__/admin/Public/images/tbg.gif" bgcolor="#E7E7E7">
+        <table width="96%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td width="24%" style="padding-left:10px;"></td>
+            <td width="76%" align="right"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table class="table table-hover table-bordered">
+          <tr>
+          <td width="10%">商品编号</td>
+          <td width="10%">商品名</td>
+          <td width="5%">类别</td>
+          <td width="5%">品牌</td>
+          <td width="10%">市场进价</td>
+          <td width="10%">额定售价</td>
+          <td width="10%">生产商</td>         
+          <td width="10%">入库时间</td>
+          <td width="10%">产地</td>
+          <td width="10%">保质期</td>  
+          <td width="10%">管理项</td>
+          </tr>
+          <foreach name='Good_array' item='list'>
+            <tr bgcolor="#FFFFFF">
+                <td><{$list['ware_id']}></td>
+                <td><{$list['ware_name']}></td>
+                <td><{$list['category']}></td>
+                <td><{$list['brand_name']}></td>
+                <td><{$list['cost_price']}></td>
+                <td><{$list['market_price']}></td>
+                <td><{$list['productor']}></td>
+                <td><{$list['in_time']}></td>
+                <td><{$list['produaddress']}></td>
+                <td><{$list['[expirationdate']}></td>
+              <td><a href="?m=GoodAdmin&a=delGood&ware_id=<{$list['ware_id']}>">删除</a></td>
+            </tr>
+          </foreach> 
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
